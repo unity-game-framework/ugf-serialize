@@ -1,18 +1,14 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
-namespace UGF.Serialize.Runtime.DotNet
+namespace UGF.Serialize.Runtime.Formatter
 {
-    public class SerializerDotNet : SerializerBase
+    public class SerializerFormatter : Serializer<byte[]>
     {
         public IFormatter Formatter { get; }
 
-        public static ISerializer Default { get; } = new SerializerDotNet(new BinaryFormatter());
-        public static int DefaultMode { get; } = 10;
-
-        public SerializerDotNet(IFormatter formatter)
+        public SerializerFormatter(IFormatter formatter)
         {
             Formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));
         }

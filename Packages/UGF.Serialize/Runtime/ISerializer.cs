@@ -4,9 +4,11 @@ namespace UGF.Serialize.Runtime
 {
     public interface ISerializer
     {
-        byte[] Serialize<T>(T target);
-        byte[] Serialize(object target);
-        T Deserialize<T>(byte[] data);
-        object Deserialize(Type targetType, byte[] data);
+        Type DataType { get; }
+
+        object Serialize<T>(T target);
+        object Serialize(object target);
+        T Deserialize<T>(object data);
+        object Deserialize(Type targetType, object data);
     }
 }
