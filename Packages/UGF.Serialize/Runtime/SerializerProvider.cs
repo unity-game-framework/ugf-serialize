@@ -6,6 +6,8 @@ namespace UGF.Serialize.Runtime
 {
     public class SerializerProvider : ISerializerProvider
     {
+        public int DataTypesCount { get { return m_serializers.Count; } }
+
         private readonly Dictionary<Type, SerializerCollection> m_serializers = new Dictionary<Type, SerializerCollection>();
 
         private class SerializerCollection
@@ -21,9 +23,9 @@ namespace UGF.Serialize.Runtime
 
         public void Add(string name, ISerializer serializer)
         {
-            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name null or empty.", nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name is null or empty.", nameof(name));
             if (serializer == null) throw new ArgumentNullException(nameof(serializer));
-            if (serializer.DataType == null) throw new ArgumentException("The data type not specified in serializer.", nameof(serializer));
+            if (serializer.DataType == null) throw new ArgumentException("The data type is not specified in serializer.", nameof(serializer));
 
             if (!m_serializers.TryGetValue(serializer.DataType, out SerializerCollection serializerCollection))
             {
@@ -43,9 +45,19 @@ namespace UGF.Serialize.Runtime
         public bool Remove(Type dataType, string name)
         {
             if (dataType == null) throw new ArgumentNullException(nameof(dataType));
-            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name null or empty.", nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name is null or empty.", nameof(name));
 
-            return m_serializers.TryGetValue(dataType, out SerializerCollection serializerCollection) && serializerCollection.Serializers.Remove(name);
+            if (m_serializers.TryGetValue(dataType, out SerializerCollection serializerCollection) && serializerCollection.Serializers.Remove(name))
+            {
+                if (serializerCollection.Serializers.Count == 0)
+                {
+                    m_serializers.Remove(dataType);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         public void Clear()
@@ -78,7 +90,7 @@ namespace UGF.Serialize.Runtime
         public ISerializer Get(Type dataType, string name)
         {
             if (dataType == null) throw new ArgumentNullException(nameof(dataType));
-            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name null or empty.", nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name is null or empty.", nameof(name));
 
             return m_serializers[dataType].Serializers[name];
         }
@@ -98,7 +110,7 @@ namespace UGF.Serialize.Runtime
         public bool TryGet(Type dataType, string name, out ISerializer serializer)
         {
             if (dataType == null) throw new ArgumentNullException(nameof(dataType));
-            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name null or empty.", nameof(name));
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException("The specified name is null or empty.", nameof(name));
 
             if (m_serializers.TryGetValue(dataType, out SerializerCollection serializerCollection))
             {
@@ -109,11 +121,21 @@ namespace UGF.Serialize.Runtime
             return false;
         }
 
+        public IReadOnlyDictionary<string, ISerializer> GetSerializers<T>()
+        {
+            return GetSerializers(typeof(T));
+        }
+
         public IReadOnlyDictionary<string, ISerializer> GetSerializers(Type dataType)
         {
             if (dataType == null) throw new ArgumentNullException(nameof(dataType));
 
             return m_serializers[dataType].AsReadOnly;
+        }
+
+        public bool TryGetSerializers<T>(out IReadOnlyDictionary<string, ISerializer> serializers)
+        {
+            return TryGetSerializers(typeof(T), out serializers);
         }
 
         public bool TryGetSerializers(Type dataType, out IReadOnlyDictionary<string, ISerializer> serializers)
@@ -143,7 +165,7 @@ namespace UGF.Serialize.Runtime
         public bool TryGetName(ISerializer serializer, out string name)
         {
             if (serializer == null) throw new ArgumentNullException(nameof(serializer));
-            if (serializer.DataType == null) throw new ArgumentException("The data type not specified in serializer.", nameof(serializer));
+            if (serializer.DataType == null) throw new ArgumentException("The data type is not specified in serializer.", nameof(serializer));
 
             if (m_serializers.TryGetValue(serializer.DataType, out SerializerCollection serializerCollection))
             {
@@ -162,6 +184,11 @@ namespace UGF.Serialize.Runtime
 
             name = null;
             return false;
+        }
+
+        public IReadOnlyCollection<Type> GetDataTypes()
+        {
+            return m_serializers.Keys;
         }
     }
 }

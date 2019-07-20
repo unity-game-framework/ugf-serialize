@@ -5,6 +5,8 @@ namespace UGF.Serialize.Runtime
 {
     public interface ISerializerProvider
     {
+        int DataTypesCount { get; }
+
         void Add(string name, ISerializer serializer);
         bool Remove<T>(string name);
         bool Remove(Type dataType, string name);
@@ -15,9 +17,12 @@ namespace UGF.Serialize.Runtime
         ISerializer Get(Type dataType, string name);
         bool TryGet<T>(string name, out ISerializer<T> serializer);
         bool TryGet(Type dataType, string name, out ISerializer serializer);
+        IReadOnlyDictionary<string, ISerializer> GetSerializers<T>();
         IReadOnlyDictionary<string, ISerializer> GetSerializers(Type dataType);
+        bool TryGetSerializers<T>(out IReadOnlyDictionary<string, ISerializer> serializers);
         bool TryGetSerializers(Type dataType, out IReadOnlyDictionary<string, ISerializer> serializers);
         string GetName(ISerializer serializer);
         bool TryGetName(ISerializer serializer, out string name);
+        IReadOnlyCollection<Type> GetDataTypes();
     }
 }
