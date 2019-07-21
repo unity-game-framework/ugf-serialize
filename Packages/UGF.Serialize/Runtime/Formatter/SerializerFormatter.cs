@@ -4,10 +4,20 @@ using System.Runtime.Serialization;
 
 namespace UGF.Serialize.Runtime.Formatter
 {
-    public class SerializerFormatter : Serializer<byte[]>
+    /// <summary>
+    /// Represents serialized that use formatter to serialize a specified target to byte array and vice versa.
+    /// </summary>
+    public class SerializerFormatter : SerializerBase<byte[]>
     {
+        /// <summary>
+        /// Gets the formatter used to convert target to byte array and vice versa.
+        /// </summary>
         public IFormatter Formatter { get; }
 
+        /// <summary>
+        /// Creates serializer with the specified formatter.
+        /// </summary>
+        /// <param name="formatter">The formatter.</param>
         public SerializerFormatter(IFormatter formatter)
         {
             Formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));

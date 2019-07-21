@@ -4,10 +4,20 @@ using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Unity
 {
-    public class SerializerUnityJsonBytes : Serializer<byte[]>
+    /// <summary>
+    /// Represents serializer that use <see cref="JsonUtility"/> to serialize a specified target to Json representation and convert to byte array.
+    /// </summary>
+    public class SerializerUnityJsonBytes : SerializerBase<byte[]>
     {
+        /// <summary>
+        /// Gets the encoding used to convert Json data to byte array.
+        /// </summary>
         public Encoding Encoding { get; }
 
+        /// <summary>
+        /// Creates serializer with the specified encoding.
+        /// </summary>
+        /// <param name="encoding">The encoding used to convert Json data to byte array.</param>
         public SerializerUnityJsonBytes(Encoding encoding)
         {
             Encoding = encoding ?? throw new ArgumentNullException(nameof(encoding));

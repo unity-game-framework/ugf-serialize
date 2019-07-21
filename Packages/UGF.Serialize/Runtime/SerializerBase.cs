@@ -2,7 +2,10 @@ using System;
 
 namespace UGF.Serialize.Runtime
 {
-    public abstract class Serializer<TData> : ISerializer<TData>
+    /// <summary>
+    /// Represents an abstract base serializer implementation.
+    /// </summary>
+    public abstract class SerializerBase<TData> : ISerializer<TData>
     {
         public Type DataType { get; } = typeof(TData);
 

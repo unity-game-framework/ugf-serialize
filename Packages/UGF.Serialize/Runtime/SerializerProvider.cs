@@ -4,6 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace UGF.Serialize.Runtime
 {
+    /// <summary>
+    /// Represents provider of the serializers.
+    /// </summary>
     public class SerializerProvider : ISerializerProvider
     {
         public int DataTypesCount { get { return m_serializers.Count; } }

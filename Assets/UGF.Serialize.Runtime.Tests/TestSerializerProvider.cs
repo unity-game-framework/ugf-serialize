@@ -7,7 +7,7 @@ namespace UGF.Serialize.Runtime.Tests
 {
     public class TestSerializerProvider
     {
-        private class SerializerText : Serializer<string>
+        private class SerializerText : SerializerBase<string>
         {
             public override string Serialize(object target)
             {
@@ -20,7 +20,7 @@ namespace UGF.Serialize.Runtime.Tests
             }
         }
 
-        private class SerializeBytes : Serializer<byte[]>
+        private class SerializeBytes : SerializerBase<byte[]>
         {
             public override byte[] Serialize(object target)
             {
