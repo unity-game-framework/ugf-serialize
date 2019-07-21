@@ -1,0 +1,17 @@
+{
+    "name": "UGF.Serialize.Runtime.Tests",
+    "references": [
+        "GUID:e76e47a0b9e0396439161248a194baa5"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
