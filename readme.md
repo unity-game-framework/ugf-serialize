@@ -4,9 +4,8 @@ UGF.Serialize
 
 ## Info
 
-- **Version**: `1.0.0-preview`
-- **Unity Version**: `2019.1.0`
-- **Scripting Runtime Version**: `.NET 4.x Equivalent`
+- **Version**: `1.0.0-preview.1`
+- **Unity Version**: `2019.2.0`
 - **Api Compatibility Level**: `.NET Standard 2.0`
 
 ### Dependencies
@@ -24,7 +23,7 @@ UGF.Serialize
 
 ## Description
 
-No description.
+Provides base interface for serialization.
 
 ## How to Install
 
