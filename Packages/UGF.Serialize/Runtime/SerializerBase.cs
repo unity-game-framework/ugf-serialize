@@ -16,7 +16,7 @@ namespace UGF.Serialize.Runtime
 
         public abstract TData Serialize(object target);
 
-        public T Deserialize<T>(TData data)
+        public virtual T Deserialize<T>(TData data)
         {
             return (T)Deserialize(typeof(T), data);
         }
