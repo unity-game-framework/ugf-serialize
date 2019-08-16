@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing.
 
+## 1.0.0-preview.2 - 2019-08-16
+- [Commits](https://github.com/unity-game-framework/ugf-serialize/compare/1.0.0-preview.1...1.0.0-preview.2)
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/3?closed=1)
+
+### Fixed
+- `SerializerBase`: made `Deserialize<T>(TData data)` as virtual.
+
 ## 1.0.0-preview.1 - 2019-08-04
 - [Commits](https://github.com/unity-game-framework/ugf-serialize/compare/1.0.0-preview...1.0.0-preview.1)
 - [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/2?closed=1)
