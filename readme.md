@@ -4,7 +4,7 @@ UGF.Serialize
 
 ## Info
 
-- **Version**: `1.0.0-preview.2`
+- **Version**: `1.1.0-preview`
 - **Unity Version**: `2019.3.0`
 - **Api Compatibility Level**: `.NET Standard 2.0`
 
