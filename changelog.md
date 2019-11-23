@@ -26,6 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing.
 
+## 1.1.0-preview - 2019-11-23
+- [Commits](https://github.com/unity-game-framework/ugf-serialize/compare/1.0.0-preview.2...1.1.0-preview)
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/4?closed=1)
+
+### Changed
+- Update to Unity 2019.3.
+- `SerializerProvider`: small refactoring.
+
 ## 1.0.0-preview.2 - 2019-08-16
 - [Commits](https://github.com/unity-game-framework/ugf-serialize/compare/1.0.0-preview.1...1.0.0-preview.2)
 - [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/3?closed=1)
