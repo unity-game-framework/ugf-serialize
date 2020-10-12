@@ -26,25 +26,25 @@ namespace UGF.Serialize.Runtime.Formatter
 
         public override byte[] Serialize(object target)
         {
-            return SerializeInternal(Formatter, target);
+            return InternalSerialize(Formatter, target);
         }
 
         public override object Deserialize(Type targetType, byte[] data)
         {
-            return DeserializeInternal(Formatter, data);
+            return InternalDeserialize(Formatter, data);
         }
 
         public override Task<byte[]> SerializeAsync(object target)
         {
-            return Task.Run(() => SerializeInternal(Formatter, target));
+            return Task.Run(() => InternalSerialize(Formatter, target));
         }
 
         public override Task<object> DeserializeAsync(Type targetType, byte[] data)
         {
-            return Task.Run(() => DeserializeInternal(Formatter, data));
+            return Task.Run(() => InternalDeserialize(Formatter, data));
         }
 
-        private static byte[] SerializeInternal(IFormatter formatter, object target)
+        private static byte[] InternalSerialize(IFormatter formatter, object target)
         {
             if (formatter == null) throw new ArgumentNullException(nameof(formatter));
             if (target == null) throw new ArgumentNullException(nameof(target));
@@ -56,7 +56,7 @@ namespace UGF.Serialize.Runtime.Formatter
             return stream.ToArray();
         }
 
-        private static object DeserializeInternal(IFormatter formatter, byte[] data)
+        private static object InternalDeserialize(IFormatter formatter, byte[] data)
         {
             if (formatter == null) throw new ArgumentNullException(nameof(formatter));
             if (data == null) throw new ArgumentNullException(nameof(data));
