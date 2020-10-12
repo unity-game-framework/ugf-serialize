@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Unity.Profiling;
 
 namespace UGF.Serialize.Runtime.Formatter
 {
@@ -14,6 +15,17 @@ namespace UGF.Serialize.Runtime.Formatter
         /// Gets the formatter used to convert target to byte array and vice versa.
         /// </summary>
         public IFormatter Formatter { get; }
+
+        private static ProfilerMarker m_markerSerialize;
+        private static ProfilerMarker m_markerDeserialize;
+
+#if ENABLE_PROFILER
+        static SerializerFormatter()
+        {
+            m_markerSerialize = new ProfilerMarker("SerializerFormatter.Serialize");
+            m_markerDeserialize = new ProfilerMarker("SerializerFormatter.Deserialize");
+        }
+#endif
 
         /// <summary>
         /// Creates serializer with the specified formatter.
@@ -49,11 +61,17 @@ namespace UGF.Serialize.Runtime.Formatter
             if (formatter == null) throw new ArgumentNullException(nameof(formatter));
             if (target == null) throw new ArgumentNullException(nameof(target));
 
+            m_markerSerialize.Begin();
+
             using var stream = new MemoryStream();
 
             formatter.Serialize(stream, target);
 
-            return stream.ToArray();
+            byte[] result = stream.ToArray();
+
+            m_markerSerialize.End();
+
+            return result;
         }
 
         private static object InternalDeserialize(IFormatter formatter, byte[] data)
@@ -61,9 +79,14 @@ namespace UGF.Serialize.Runtime.Formatter
             if (formatter == null) throw new ArgumentNullException(nameof(formatter));
             if (data == null) throw new ArgumentNullException(nameof(data));
 
-            using var stream = new MemoryStream(data);
+            m_markerDeserialize.Begin();
 
-            return formatter.Deserialize(stream);
+            using var stream = new MemoryStream(data);
+            object result = formatter.Deserialize(stream);
+
+            m_markerDeserialize.End();
+
+            return result;
         }
     }
 }

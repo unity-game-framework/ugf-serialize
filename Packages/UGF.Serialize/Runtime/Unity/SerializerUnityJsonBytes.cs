@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Profiling;
 using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Unity
@@ -14,6 +15,17 @@ namespace UGF.Serialize.Runtime.Unity
         /// Gets the encoding used to convert Json data to byte array.
         /// </summary>
         public Encoding Encoding { get; }
+
+        private static ProfilerMarker m_markerSerialize;
+        private static ProfilerMarker m_markerDeserialize;
+
+#if ENABLE_PROFILER
+        static SerializerUnityJsonBytes()
+        {
+            m_markerSerialize = new ProfilerMarker("SerializerUnityJsonBytes.Serialize");
+            m_markerDeserialize = new ProfilerMarker("SerializerUnityJsonBytes.Deserialize");
+        }
+#endif
 
         /// <summary>
         /// Creates serializer with the specified encoding.
@@ -49,8 +61,12 @@ namespace UGF.Serialize.Runtime.Unity
             if (encoding == null) throw new ArgumentNullException(nameof(encoding));
             if (target == null) throw new ArgumentNullException(nameof(target));
 
+            m_markerSerialize.Begin();
+
             string text = JsonUtility.ToJson(target);
             byte[] result = encoding.GetBytes(text);
+
+            m_markerSerialize.End();
 
             return result;
         }
@@ -61,8 +77,12 @@ namespace UGF.Serialize.Runtime.Unity
             if (targetType == null) throw new ArgumentNullException(nameof(targetType));
             if (data == null) throw new ArgumentNullException(nameof(data));
 
+            m_markerDeserialize.Begin();
+
             string text = encoding.GetString(data);
             object result = JsonUtility.FromJson(text, targetType);
+
+            m_markerDeserialize.End();
 
             return result;
         }
