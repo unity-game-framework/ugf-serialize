@@ -30,7 +30,7 @@ namespace UGF.Serialize.Runtime.Unity
         /// Creates serialize with the specified readable option.
         /// </summary>
         /// <param name="readable">The value that determines whether to use readable layout of the Json.</param>
-        public SerializerUnityJson(bool readable)
+        public SerializerUnityJson(bool readable = false)
         {
             Readable = readable;
         }

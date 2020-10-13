@@ -25,7 +25,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Serialize()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             string text = serialize.Serialize(target);
@@ -37,7 +37,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Deserialize()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             string text = serialize.Serialize(target);
@@ -51,7 +51,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator SerializeAsync()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             Task<string> task = serialize.SerializeAsync(target);
@@ -70,7 +70,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator DeserializeAsync()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             string text = serialize.Serialize(target);

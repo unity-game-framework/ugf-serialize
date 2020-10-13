@@ -21,7 +21,7 @@ namespace UGF.Serialize.Editor.Unity
         }
 #endif
 
-        public SerializerUnityJsonEditor(bool readable)
+        public SerializerUnityJsonEditor(bool readable = false)
         {
             Readable = readable;
         }
