@@ -2,7 +2,8 @@
     "name": "UGF.Serialize.Editor",
     "rootNamespace": "UGF.Serialize.Editor",
     "references": [
-        "GUID:e76e47a0b9e0396439161248a194baa5"
+        "GUID:e76e47a0b9e0396439161248a194baa5",
+        "GUID:abdd615e45137c74ca2ce9c636c78c15"
     ],
     "includePlatforms": [
         "Editor"
