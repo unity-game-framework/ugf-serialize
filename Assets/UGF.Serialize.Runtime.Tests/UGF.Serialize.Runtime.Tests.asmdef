@@ -1,7 +1,9 @@
 {
     "name": "UGF.Serialize.Runtime.Tests",
+    "rootNamespace": "",
     "references": [
-        "GUID:e76e47a0b9e0396439161248a194baa5"
+        "GUID:e76e47a0b9e0396439161248a194baa5",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -14,5 +16,6 @@
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
     ],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
