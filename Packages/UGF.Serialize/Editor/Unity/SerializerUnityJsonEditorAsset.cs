@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UGF.Serialize.Editor.Unity
 {
-    [CreateAssetMenu(menuName = "UGF/Serialize/SerializerUnityJsonEditor", order = 2000)]
+    [CreateAssetMenu(menuName = "UGF/Serialize/Serializer Unity Json Editor", order = 2000)]
     public class SerializerUnityJsonEditorAsset : SerializerAsset<string>
     {
         [SerializeField] private bool m_readable;
