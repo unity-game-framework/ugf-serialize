@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.ugf.jsonnet": "1.0.0",
+    "com.ugf.jsonnet": "1.1.0",
     "com.ugf.yaml": "1.0.0",
     "com.unity.ide.rider": "2.0.7",
     "com.unity.test-framework": "1.1.18"
