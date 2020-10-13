@@ -2,6 +2,7 @@
 
 namespace UGF.Serialize.Runtime.Unity
 {
+    [CreateAssetMenu(menuName = "UGF/Serialize/SerializerUnityJson", order = 2000)]
     public class SerializerUnityJsonAsset : SerializerAsset<string>
     {
         [SerializeField] private bool m_readable;
@@ -11,6 +12,11 @@ namespace UGF.Serialize.Runtime.Unity
         protected override ISerializer<string> OnBuildTyped()
         {
             return new SerializerUnityJson(m_readable);
+        }
+
+        private void Reset()
+        {
+            Name = "unity-json-text";
         }
     }
 }
