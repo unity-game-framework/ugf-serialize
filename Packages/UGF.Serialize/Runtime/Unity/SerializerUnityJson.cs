@@ -37,31 +37,21 @@ namespace UGF.Serialize.Runtime.Unity
 
         public override string Serialize(object target)
         {
-            if (target == null) throw new ArgumentNullException(nameof(target));
-
             return InternalSerialize(target, Readable);
         }
 
         public override object Deserialize(Type targetType, string data)
         {
-            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
             return InternalDeserialize(targetType, data);
         }
 
         public override Task<string> SerializeAsync(object target)
         {
-            if (target == null) throw new ArgumentNullException(nameof(target));
-
             return Task.Run(() => InternalSerialize(target, Readable));
         }
 
         public override Task<object> DeserializeAsync(Type targetType, string data)
         {
-            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
             return Task.Run(() => InternalDeserialize(targetType, data));
         }
 
