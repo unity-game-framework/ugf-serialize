@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Formatter
 {
-    [CreateAssetMenu(menuName = "UGF/Serialize/SerializerFormatterBinary", order = 2000)]
+    [CreateAssetMenu(menuName = "UGF/Serialize/Serializer Formatter Binary", order = 2000)]
     public class SerializerFormatterBinaryAsset : SerializerAsset<byte[]>
     {
         protected override ISerializer<byte[]> OnBuildTyped()

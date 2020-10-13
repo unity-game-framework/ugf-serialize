@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Unity
 {
-    [CreateAssetMenu(menuName = "UGF/Serialize/SerializerUnityJsonBytes", order = 2000)]
+    [CreateAssetMenu(menuName = "UGF/Serialize/Serializer Unity Json Bytes", order = 2000)]
     public class SerializerUnityJsonBytesAsset : SerializerAsset<byte[]>
     {
         protected override ISerializer<byte[]> OnBuildTyped()
