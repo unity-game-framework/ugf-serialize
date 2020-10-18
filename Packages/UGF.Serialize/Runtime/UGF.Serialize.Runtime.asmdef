@@ -1,3 +1,28 @@
-﻿{
-	"name": "UGF.Serialize.Runtime"
+{
+    "name": "UGF.Serialize.Runtime",
+    "rootNamespace": "UGF.Serialize.Runtime",
+    "references": [
+        "GUID:63a84d759dbdad34287768b1f164c241",
+        "GUID:45cb6418a66530e4abd8950fdee1ea57"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.ugf.jsonnet",
+            "expression": "",
+            "define": "UGF_SERIALIZE_JSONNET"
+        },
+        {
+            "name": "com.ugf.yaml",
+            "expression": "",
+            "define": "UGF_SERIALIZE_YAML"
+        }
+    ],
+    "noEngineReferences": false
 }

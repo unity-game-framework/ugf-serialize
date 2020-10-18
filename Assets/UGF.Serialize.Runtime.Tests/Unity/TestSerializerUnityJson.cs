@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using UGF.Serialize.Runtime.Unity;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace UGF.Serialize.Runtime.Tests.Unity
 {
@@ -22,7 +25,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Serialize()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             string text = serialize.Serialize(target);
@@ -34,11 +37,52 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Deserialize()
         {
-            var serialize = new SerializerUnityJson(false);
+            var serialize = new SerializerUnityJson();
             var target = new Target();
 
             string text = serialize.Serialize(target);
             var target0 = serialize.Deserialize<Target>(text);
+
+            Assert.AreEqual(target.BoolValue, target0.BoolValue);
+            Assert.AreEqual(target.IntValue, target0.IntValue);
+            Assert.AreEqual(target.FloatValue, target0.FloatValue);
+        }
+
+        [UnityTest]
+        public IEnumerator SerializeAsync()
+        {
+            var serialize = new SerializerUnityJson();
+            var target = new Target();
+
+            Task<string> task = serialize.SerializeAsync(target);
+
+            while (!task.IsCompleted)
+            {
+                yield return null;
+            }
+
+            string text = task.Result;
+
+            Assert.NotNull(text);
+            Assert.Greater(text.Length, 0);
+        }
+
+        [UnityTest]
+        public IEnumerator DeserializeAsync()
+        {
+            var serialize = new SerializerUnityJson();
+            var target = new Target();
+
+            string text = serialize.Serialize(target);
+
+            Task<Target> task = serialize.DeserializeAsync<Target>(text);
+
+            while (!task.IsCompleted)
+            {
+                yield return null;
+            }
+
+            Target target0 = task.Result;
 
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
