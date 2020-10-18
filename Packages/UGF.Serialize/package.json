@@ -1,27 +1,27 @@
 {
-    "name": "com.ugf.serialize",
-    "displayName": "UGF.Serialize",
-    "version": "1.1.0-preview",
-    "unity": "2020.2",
-    "apiCompatibility": ".NET Standard 2.0",
-    "description": "An abstract serialization interface.",
-    "author": {
-        "name": "Unity Game Framework",
-        "url": "https://github.com/unity-game-framework"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/unity-game-framework/ugf-serialize.git"
-    },
-    "changelogUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/changelog.md",
-    "licensesUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/license",
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@unity-game-framework"
-    },
-    "bintray": {
-        "registry": "https://api.bintray.com/content/unity-game-framework/public"
-    },
-    "dependencies": {
-        "com.ugf.editortools": "1.3.1"
-    }
+  "name": "com.ugf.serialize",
+  "displayName": "UGF.Serialize",
+  "version": "1.2.0",
+  "unity": "2020.2",
+  "apiCompatibility": ".NET Standard 2.0",
+  "description": "An abstract serialization interface.",
+  "author": {
+    "name": "Unity Game Framework",
+    "url": "https://github.com/unity-game-framework"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/unity-game-framework/ugf-serialize.git"
+  },
+  "changelogUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/changelog.md",
+  "licensesUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/license",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@unity-game-framework"
+  },
+  "bintray": {
+    "registry": "https://api.bintray.com/content/unity-game-framework/public"
+  },
+  "dependencies": {
+    "com.ugf.editortools": "1.3.1"
+  }
 }
