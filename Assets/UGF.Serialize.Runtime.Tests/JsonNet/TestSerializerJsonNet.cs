@@ -91,5 +91,4 @@ namespace UGF.Serialize.Runtime.Tests.JsonNet
         }
     }
 }
-
 #endif
