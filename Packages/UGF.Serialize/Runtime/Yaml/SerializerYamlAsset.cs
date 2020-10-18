@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UGF_SERIALIZE_YAML
+using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Yaml
 {
@@ -16,3 +17,4 @@ namespace UGF.Serialize.Runtime.Yaml
         }
     }
 }
+#endif
