@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using Unity.Profiling;
 
@@ -26,6 +27,14 @@ namespace UGF.Serialize.Runtime.Formatter
             m_markerDeserialize = new ProfilerMarker("SerializerFormatter.Deserialize");
         }
 #endif
+
+        /// <summary>
+        /// Creates serializer with the BinaryFormatter.
+        /// </summary>
+        public SerializerFormatter()
+        {
+            Formatter = new BinaryFormatter();
+        }
 
         /// <summary>
         /// Creates serializer with the specified formatter.

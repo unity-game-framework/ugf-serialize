@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using UGF.Serialize.Editor.Unity;
+using UGF.Serialize.Runtime;
 using UnityEngine;
 
 namespace UGF.Serialize.Editor.Tests.Unity
@@ -30,6 +31,22 @@ namespace UGF.Serialize.Editor.Tests.Unity
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
+        }
+
+        [Test]
+        public void Copy()
+        {
+            var serializer = new SerializerUnityYamlEditor();
+            var target = ScriptableObject.CreateInstance<TestSerializerUnityYamlEditorTarget>();
+
+            TestSerializerUnityYamlEditorTarget copy = SerializeUtility.Copy(target, serializer);
+
+            Assert.NotNull(copy);
+            Assert.AreNotEqual(copy, target);
+            Assert.AreNotSame(copy, target);
+            Assert.AreEqual(copy.BoolValue, target.BoolValue);
+            Assert.AreEqual(copy.IntValue, target.IntValue);
+            Assert.AreEqual(copy.FloatValue, target.FloatValue);
         }
     }
 }
