@@ -26,7 +26,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Serialize()
         {
-            var serializer = new SerializerUnityJsonBytes(Encoding.Default);
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -38,7 +38,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Deserialize()
         {
-            var serializer = new SerializerUnityJsonBytes(Encoding.Default);
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -52,7 +52,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator SerializeAsync()
         {
-            var serializer = new SerializerUnityJsonBytes(Encoding.Default);
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             Task<byte[]> task = serializer.SerializeAsync(target);
@@ -71,7 +71,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator DeserializeAsync()
         {
-            var serializer = new SerializerUnityJsonBytes(Encoding.Default);
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
