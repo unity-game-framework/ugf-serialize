@@ -28,6 +28,14 @@ namespace UGF.Serialize.Runtime.Unity
 #endif
 
         /// <summary>
+        /// Creates serialize with the default encoding.
+        /// </summary>
+        public SerializerUnityJsonBytes()
+        {
+            Encoding = Encoding.Default;
+        }
+
+        /// <summary>
         /// Creates serializer with the specified encoding.
         /// </summary>
         /// <param name="encoding">The encoding used to convert Json data to byte array.</param>

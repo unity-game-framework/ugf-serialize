@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace UGF.Serialize.Runtime.Formatter
@@ -8,7 +9,14 @@ namespace UGF.Serialize.Runtime.Formatter
     {
         protected override ISerializer<byte[]> OnBuildTyped()
         {
-            return new SerializerFormatter(new BinaryFormatter());
+            IFormatter formatter = OnCreateFormatter();
+
+            return new SerializerFormatter(formatter);
+        }
+
+        protected virtual IFormatter OnCreateFormatter()
+        {
+            return new BinaryFormatter();
         }
 
         private void Reset()

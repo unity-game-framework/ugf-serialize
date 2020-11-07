@@ -8,7 +8,14 @@ namespace UGF.Serialize.Runtime.Unity
     {
         protected override ISerializer<byte[]> OnBuildTyped()
         {
-            return new SerializerUnityJsonBytes(Encoding.Default);
+            Encoding encoding = OnCreateEncoding();
+
+            return new SerializerUnityJsonBytes(encoding);
+        }
+
+        protected virtual Encoding OnCreateEncoding()
+        {
+            return Encoding.Default;
         }
 
         private void Reset()
