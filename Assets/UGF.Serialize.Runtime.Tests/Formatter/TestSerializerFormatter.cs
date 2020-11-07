@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using UGF.Serialize.Runtime.Formatter;
@@ -21,7 +20,7 @@ namespace UGF.Serialize.Runtime.Tests.Formatter
         [Test]
         public void Serialize()
         {
-            var serializer = new SerializerFormatter(new BinaryFormatter());
+            var serializer = new SerializerFormatter();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -33,7 +32,7 @@ namespace UGF.Serialize.Runtime.Tests.Formatter
         [Test]
         public void Deserialize()
         {
-            var serializer = new SerializerFormatter(new BinaryFormatter());
+            var serializer = new SerializerFormatter();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -47,7 +46,7 @@ namespace UGF.Serialize.Runtime.Tests.Formatter
         [UnityTest]
         public IEnumerator SerializeAsync()
         {
-            var serializer = new SerializerFormatter(new BinaryFormatter());
+            var serializer = new SerializerFormatter();
             var target = new Target();
 
             Task<byte[]> task = serializer.SerializeAsync(target);
@@ -66,7 +65,7 @@ namespace UGF.Serialize.Runtime.Tests.Formatter
         [UnityTest]
         public IEnumerator DeserializeAsync()
         {
-            var serializer = new SerializerFormatter(new BinaryFormatter());
+            var serializer = new SerializerFormatter();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
