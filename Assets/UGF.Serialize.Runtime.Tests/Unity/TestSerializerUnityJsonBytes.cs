@@ -89,5 +89,21 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             Assert.AreEqual(target.IntValue, target0.IntValue);
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
         }
+
+        [Test]
+        public void Copy()
+        {
+            var serializer = new SerializerUnityJsonBytes();
+            var target = new Target();
+
+            Target copy = SerializeUtility.Copy(target, serializer);
+
+            Assert.NotNull(copy);
+            Assert.AreNotEqual(copy, target);
+            Assert.AreNotSame(copy, target);
+            Assert.AreEqual(copy.BoolValue, target.BoolValue);
+            Assert.AreEqual(copy.IntValue, target.IntValue);
+            Assert.AreEqual(copy.FloatValue, target.FloatValue);
+        }
     }
 }
