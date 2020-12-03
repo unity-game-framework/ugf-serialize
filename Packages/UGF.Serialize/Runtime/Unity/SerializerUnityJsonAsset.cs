@@ -2,7 +2,7 @@
 
 namespace UGF.Serialize.Runtime.Unity
 {
-    [CreateAssetMenu(menuName = "UGF/Serialize/Serializer Unity Json", order = 2000)]
+    [CreateAssetMenu(menuName = "Unity Game Framework/Serialize/Serializer Unity Json", order = 2000)]
     public class SerializerUnityJsonAsset : SerializerAsset<string>
     {
         [SerializeField] private bool m_readable;
