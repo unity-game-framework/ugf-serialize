@@ -1,13 +1,11 @@
 ﻿using System;
+using UGF.Builder.Runtime;
 
 namespace UGF.Serialize.Runtime
 {
-    public interface ISerializerBuilder
+    public interface ISerializerBuilder : IBuilder<ISerializer>
     {
         string Name { get; }
         Type DataType { get; }
-
-        T Build<T>() where T : ISerializer;
-        ISerializer Build();
     }
 }

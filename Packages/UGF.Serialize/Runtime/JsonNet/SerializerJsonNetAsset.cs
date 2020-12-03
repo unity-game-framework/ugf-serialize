@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UGF.Serialize.Runtime.JsonNet
 {
-    [CreateAssetMenu(menuName = "UGF/Serialize/Serializer JsonNet", order = 2000)]
+    [CreateAssetMenu(menuName = "Unity Game Framework/Serialize/Serializer JsonNet", order = 2000)]
     public class SerializerJsonNetAsset : SerializerAsset<string>
     {
         [SerializeField] private bool m_readable;
