@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/2.0.0) - 2020-12-03  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/7?closed=1)  
+    
+
+### Changed
+
+- Update package with builders package ([#29](https://github.com/unity-game-framework/ugf-serialize/pull/29))  
+    - Add dependency package: `com.ugf.builder` of `2.0.0` version.
+    - Change `com.ugf.editortools` to `1.7.0` version.
+    - Change create menu root names from `UGF` to `Unity Game Framework`.
+    - Change `ISerializerBuilder` interface to inherit from `IBuilder<ISerializer>`.
+    - Change `SerializerAsset` class to inherit from `BuilderAsset<ISerializer>`.
+
 ## [1.3.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/1.3.0) - 2020-11-07  
 
 ### Release Notes
