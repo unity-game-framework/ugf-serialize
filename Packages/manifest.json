@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.ugf.builder": "file:../../ugf-builder/Packages/UGF.Builder",
     "com.ugf.jsonnet": "1.1.0",
     "com.ugf.yaml": "1.0.0",
     "com.unity.ide.rider": "3.0.3",
