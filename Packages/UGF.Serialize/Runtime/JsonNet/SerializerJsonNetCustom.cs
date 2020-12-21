@@ -37,22 +37,20 @@ namespace UGF.Serialize.Runtime.JsonNet
         {
             JsonSerializer serializer = OnCreateSerializer();
 
-            using (JsonWriter writer = OnCreateWriter(target))
-            {
-                serializer.Serialize(writer, target);
+            using JsonWriter writer = OnCreateWriter(target);
 
-                return writer.ToString();
-            }
+            serializer.Serialize(writer, target);
+
+            return writer.ToString();
         }
 
         protected override object OnDeserialize(Type targetType, string data)
         {
             JsonSerializer serializer = OnCreateSerializer();
 
-            using (JsonReader reader = OnCreateReader(targetType, data))
-            {
-                return serializer.Deserialize(reader, targetType);
-            }
+            using JsonReader reader = OnCreateReader(targetType, data);
+
+            return serializer.Deserialize(reader, targetType);
         }
     }
 }
