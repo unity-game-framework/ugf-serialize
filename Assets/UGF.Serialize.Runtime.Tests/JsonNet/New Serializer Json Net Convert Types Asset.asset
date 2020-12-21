@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: jsonnet-text
   m_readable: 0
-  m_serializeNames: []
-  m_deserializeNames: []
+  m_serializeNames:
+  - m_from: $type
+    m_to: type
+  m_deserializeNames:
+  - m_from: type
+    m_to: $type
   m_types:
-  - m_name: Vector2
+  - m_name: target
     m_assembly: 
     m_type:
-      m_value: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      m_value: UGF.Serialize.Runtime.Tests.JsonNet.TestSerializerJsonNet+Target,
+        UGF.Serialize.Runtime.Tests, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

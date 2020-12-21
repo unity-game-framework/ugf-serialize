@@ -18,13 +18,18 @@ namespace UGF.Serialize.Editor.JsonNet
             SerializedProperty propertyTo = serializedProperty.FindPropertyRelative("m_to");
 
             float space = EditorGUIUtility.standardVerticalSpacing * 2F;
+            float labelWidth = EditorGUIUtility.labelWidth + EditorIMGUIUtility.IndentPerLevel;
 
-            var rectFrom = new Rect(position.x, position.y, position.width * 0.5F, position.height);
-            var rectTo = new Rect(rectFrom.xMax + space, position.y, position.width * 0.5F - space, position.height);
+            var rectFrom = new Rect(position.x, position.y, labelWidth, position.height);
+            var rectTo = new Rect(rectFrom.xMax + space, position.y, position.width - rectFrom.width - space, position.height);
 
-            using (new LabelWidthScope(50F))
+            using (new LabelWidthScope(35F))
             {
                 EditorGUI.PropertyField(rectFrom, propertyFrom);
+            }
+
+            using (new LabelWidthScope(20F))
+            {
                 EditorGUI.PropertyField(rectTo, propertyTo);
             }
         }
