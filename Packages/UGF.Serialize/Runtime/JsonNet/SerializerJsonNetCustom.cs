@@ -25,7 +25,7 @@ namespace UGF.Serialize.Runtime.JsonNet
 
         protected virtual JsonWriter OnCreateWriter(object target)
         {
-            return new SerializerJsonNetWriter(new StringWriter(new StringBuilder(), CultureInfo.InvariantCulture));
+            return new SerializerJsonNetWriter(new StringWriter(CultureInfo.InvariantCulture));
         }
 
         protected virtual JsonReader OnCreateReader(Type targetType, string data)
