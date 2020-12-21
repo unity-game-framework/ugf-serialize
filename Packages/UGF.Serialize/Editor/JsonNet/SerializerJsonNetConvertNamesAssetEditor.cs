@@ -14,7 +14,7 @@ namespace UGF.Serialize.Editor.JsonNet
         private ReorderableListDrawer m_listSerializeNames;
         private ReorderableListDrawer m_listDeserializeNames;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             m_propertyScript = serializedObject.FindProperty("m_Script");
             m_propertyReadable = serializedObject.FindProperty("m_readable");
@@ -25,7 +25,7 @@ namespace UGF.Serialize.Editor.JsonNet
             m_listDeserializeNames.Enable();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             m_listSerializeNames.Disable();
             m_listDeserializeNames.Disable();
@@ -35,16 +35,21 @@ namespace UGF.Serialize.Editor.JsonNet
         {
             using (new SerializedObjectUpdateScope(serializedObject))
             {
-                using (new EditorGUI.DisabledScope(true))
-                {
-                    EditorGUILayout.PropertyField(m_propertyScript);
-                }
-
-                EditorGUILayout.PropertyField(m_propertyReadable);
-
-                m_listSerializeNames.DrawGUILayout();
-                m_listDeserializeNames.DrawGUILayout();
+                OnDrawGUILayout();
             }
+        }
+
+        protected virtual void OnDrawGUILayout()
+        {
+            using (new EditorGUI.DisabledScope(true))
+            {
+                EditorGUILayout.PropertyField(m_propertyScript);
+            }
+
+            EditorGUILayout.PropertyField(m_propertyReadable);
+
+            m_listSerializeNames.DrawGUILayout();
+            m_listDeserializeNames.DrawGUILayout();
         }
     }
 }
