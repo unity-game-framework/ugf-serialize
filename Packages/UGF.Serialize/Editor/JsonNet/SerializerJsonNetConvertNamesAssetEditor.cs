@@ -1,0 +1,51 @@
+﻿#if UGF_SERIALIZE_JSONNET
+using UGF.EditorTools.Editor.IMGUI;
+using UGF.EditorTools.Editor.IMGUI.Scopes;
+using UGF.Serialize.Runtime.JsonNet;
+using UnityEditor;
+
+namespace UGF.Serialize.Editor.JsonNet
+{
+    [CustomEditor(typeof(SerializerJsonNetConvertNamesAsset), true)]
+    internal class SerializerJsonNetConvertNamesAssetEditor : UnityEditor.Editor
+    {
+        private SerializedProperty m_propertyScript;
+        private SerializedProperty m_propertyReadable;
+        private ReorderableListDrawer m_listSerializeNames;
+        private ReorderableListDrawer m_listDeserializeNames;
+
+        private void OnEnable()
+        {
+            m_propertyScript = serializedObject.FindProperty("m_Script");
+            m_propertyReadable = serializedObject.FindProperty("m_readable");
+            m_listSerializeNames = new SerializerJsonNetConvertNamesListDrawer(serializedObject.FindProperty("m_serializeNames"));
+            m_listDeserializeNames = new SerializerJsonNetConvertNamesListDrawer(serializedObject.FindProperty("m_deserializeNames"));
+
+            m_listSerializeNames.Enable();
+            m_listDeserializeNames.Enable();
+        }
+
+        private void OnDisable()
+        {
+            m_listSerializeNames.Disable();
+            m_listDeserializeNames.Disable();
+        }
+
+        public override void OnInspectorGUI()
+        {
+            using (new SerializedObjectUpdateScope(serializedObject))
+            {
+                using (new EditorGUI.DisabledScope(true))
+                {
+                    EditorGUILayout.PropertyField(m_propertyScript);
+                }
+
+                EditorGUILayout.PropertyField(m_propertyReadable);
+
+                m_listSerializeNames.DrawGUILayout();
+                m_listDeserializeNames.DrawGUILayout();
+            }
+        }
+    }
+}
+#endif
