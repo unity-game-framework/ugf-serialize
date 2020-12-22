@@ -42,7 +42,7 @@ namespace UGF.Serialize.Runtime.Tests.JsonNet
             string result = serializer.Serialize(target);
             string expected = Resources.Load<TextAsset>("SerializerJsonNetCustomResult").text;
 
-            Assert.AreEqual(expected, $"{result}\n");
+            Assert.AreEqual(expected, $"{result}\r\n");
 
             var result2 = serializer.Deserialize<Target>(result);
 

@@ -20,7 +20,7 @@
     "versionDefines": [
         {
             "name": "com.ugf.jsonnet",
-            "expression": "1.2.1",
+            "expression": "1.2.2",
             "define": "UGF_SERIALIZE_JSONNET"
         },
         {

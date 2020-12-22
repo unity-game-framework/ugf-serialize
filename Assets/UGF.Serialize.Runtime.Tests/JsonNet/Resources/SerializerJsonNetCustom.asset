@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: jsonnet-text
   m_readable: 1
+  m_indent: 2
   m_serializeNames:
   - m_from: $type
     m_to: type
