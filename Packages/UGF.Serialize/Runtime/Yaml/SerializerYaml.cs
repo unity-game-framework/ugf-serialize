@@ -3,11 +3,16 @@ using System;
 using System.Threading.Tasks;
 using UGF.Yaml.Runtime;
 using Unity.Profiling;
+using IYamlSerializer = YamlDotNet.Serialization.ISerializer;
+using IYamlDeserializer = YamlDotNet.Serialization.IDeserializer;
 
 namespace UGF.Serialize.Runtime.Yaml
 {
     public class SerializerYaml : SerializerAsyncBase<string>
     {
+        public IYamlSerializer Serializer { get; }
+        public IYamlDeserializer Deserializer { get; }
+
         private static ProfilerMarker m_markerSerialize;
         private static ProfilerMarker m_markerDeserialize;
 
@@ -18,6 +23,16 @@ namespace UGF.Serialize.Runtime.Yaml
             m_markerDeserialize = new ProfilerMarker("SerializerYaml.Deserialize");
         }
 #endif
+
+        public SerializerYaml() : this(YamlUtility.DefaultSerializer, YamlUtility.DefaultDeserializer)
+        {
+        }
+
+        public SerializerYaml(IYamlSerializer serializer, IYamlDeserializer deserializer)
+        {
+            Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            Deserializer = deserializer ?? throw new ArgumentNullException(nameof(deserializer));
+        }
 
         public override string Serialize(object target)
         {
@@ -39,27 +54,37 @@ namespace UGF.Serialize.Runtime.Yaml
             return Task.Run(() => InternalDeserialize(targetType, data));
         }
 
-        private static string InternalSerialize(object target)
+        protected virtual string OnSerialize(object target)
+        {
+            return Serializer.Serialize(target);
+        }
+
+        protected virtual object OnDeserialize(Type targetType, string data)
+        {
+            return Deserializer.Deserialize(data, targetType);
+        }
+
+        private string InternalSerialize(object target)
         {
             if (target == null) throw new ArgumentNullException(nameof(target));
 
             m_markerSerialize.Begin();
 
-            string result = YamlUtility.ToYaml(target);
+            string result = OnSerialize(target);
 
             m_markerSerialize.End();
 
             return result;
         }
 
-        private static object InternalDeserialize(Type targetType, string data)
+        private object InternalDeserialize(Type targetType, string data)
         {
             if (targetType == null) throw new ArgumentNullException(nameof(targetType));
             if (data == null) throw new ArgumentNullException(nameof(data));
 
             m_markerDeserialize.Begin();
 
-            object target = YamlUtility.FromYaml(data, targetType);
+            object target = OnDeserialize(targetType, data);
 
             m_markerDeserialize.End();
 

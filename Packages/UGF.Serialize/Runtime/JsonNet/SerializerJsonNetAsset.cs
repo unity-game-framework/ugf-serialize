@@ -7,12 +7,14 @@ namespace UGF.Serialize.Runtime.JsonNet
     public class SerializerJsonNetAsset : SerializerAsset<string>
     {
         [SerializeField] private bool m_readable;
+        [SerializeField] private int m_indent;
 
         public bool Readable { get { return m_readable; } set { m_readable = value; } }
+        public int Indent { get { return m_indent; } set { m_indent = value; } }
 
         protected override ISerializer<string> OnBuildTyped()
         {
-            return new SerializerJsonNet(m_readable);
+            return new SerializerJsonNet(m_readable, m_indent);
         }
 
         private void Reset()
