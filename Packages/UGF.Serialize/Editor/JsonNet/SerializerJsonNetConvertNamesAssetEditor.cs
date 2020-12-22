@@ -11,6 +11,7 @@ namespace UGF.Serialize.Editor.JsonNet
     {
         private SerializedProperty m_propertyScript;
         private SerializedProperty m_propertyReadable;
+        private SerializedProperty m_propertyIndent;
         private ReorderableListDrawer m_listSerializeNames;
         private ReorderableListDrawer m_listDeserializeNames;
 
@@ -18,6 +19,7 @@ namespace UGF.Serialize.Editor.JsonNet
         {
             m_propertyScript = serializedObject.FindProperty("m_Script");
             m_propertyReadable = serializedObject.FindProperty("m_readable");
+            m_propertyIndent = serializedObject.FindProperty("m_indent");
             m_listSerializeNames = new SerializerJsonNetConvertNamesListDrawer(serializedObject.FindProperty("m_serializeNames"));
             m_listDeserializeNames = new SerializerJsonNetConvertNamesListDrawer(serializedObject.FindProperty("m_deserializeNames"));
 
@@ -47,6 +49,7 @@ namespace UGF.Serialize.Editor.JsonNet
             }
 
             EditorGUILayout.PropertyField(m_propertyReadable);
+            EditorGUILayout.PropertyField(m_propertyIndent);
 
             m_listSerializeNames.DrawGUILayout();
             m_listDeserializeNames.DrawGUILayout();

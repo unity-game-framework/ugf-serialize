@@ -59,7 +59,14 @@ namespace UGF.Serialize.Runtime.JsonNet
 
         protected virtual string OnSerialize(object target)
         {
-            return JsonNetUtility.ToJson(target, Settings, Readable);
+            string result = JsonNetUtility.ToJson(target, Settings);
+
+            if (Readable)
+            {
+                result = JsonNetUtility.Format(result, Readable, Indent);
+            }
+
+            return result;
         }
 
         protected virtual object OnDeserialize(Type targetType, string data)

@@ -36,7 +36,7 @@ namespace UGF.Serialize.Runtime.JsonNet
 
             if (Readable)
             {
-                result = JsonNetUtility.Format(result);
+                result = JsonNetUtility.Format(result, true, Indent);
             }
 
             return result;
