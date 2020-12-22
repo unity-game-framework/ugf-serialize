@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/2.1.0) - 2020-12-22  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/8?closed=1)  
+    
+
+### Added
+
+- Add option to extend default serializers ([#32](https://github.com/unity-game-framework/ugf-serialize/pull/32))  
+    - Add `SerializerJsonNet.OnSerialize()` and `OnDeserialize()` overridable methods used to implement custom `JsonNet` serialization.
+    - Add `SerializerJsonNetCustom` class to implement `JsonNet` serialization with custom reader and writer.
+    - Add `SerializerJsonNetConvertNames` and `SerializerJsonNetConvertNamesAsset` to create and use `JsonNet` serializer which can convert property names during serialization and deserialization.
+    - Add `SerializerJsonNetConvertTypesAsset` which create `SerializerJsonNetConvertNames` serializer with `ConvertTypeNameBinder` binder used to convert type information for specific types.
+    - Add `SerializerYaml.OnSerialize()` and `OnDeserialize()` overridable methods used to implement custom serialization with `YamlDotNet`.
+    - Change `SerializerJsonNet` to use `JsonSerializerSettings` settings for `JsonNet` serialization and `Indent` value to specify indentation with readable formatting.
+    - Change `SerializerYaml` to use specified `ISerializer` and `IDeserializer` serializers from `YamlDotNet`.
+
 ## [2.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/2.0.0) - 2020-12-03  
 
 ### Release Notes

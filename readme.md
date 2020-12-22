@@ -4,14 +4,14 @@ UGF.Serialize
 
 ## Info
 
-- **Version**: `2.0.0`
+- **Version**: `2.1.0`
 - **Unity**: `2020.2`
 - **API Compatibility Level**: `.NET Standard 2.0`
 
 ### Dependencies
 
 - `com.ugf.builder`: `2.0.0`
-- `com.ugf.editortools`: `1.7.0`
+- `com.ugf.editortools`: `1.8.1`
 
 
 ### Description
