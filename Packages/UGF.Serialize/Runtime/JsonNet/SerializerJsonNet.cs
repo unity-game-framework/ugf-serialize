@@ -11,6 +11,7 @@ namespace UGF.Serialize.Runtime.JsonNet
     {
         public JsonSerializerSettings Settings { get; }
         public bool Readable { get; }
+        public int Indent { get; }
 
         private static ProfilerMarker m_markerSerialize;
         private static ProfilerMarker m_markerDeserialize;
@@ -23,14 +24,17 @@ namespace UGF.Serialize.Runtime.JsonNet
         }
 #endif
 
-        public SerializerJsonNet(bool readable = false) : this(JsonNetUtility.DefaultSettings, readable)
+        public SerializerJsonNet(bool readable = false, int indent = 2) : this(JsonNetUtility.DefaultSettings, readable, indent)
         {
         }
 
-        public SerializerJsonNet(JsonSerializerSettings settings, bool readable = false)
+        public SerializerJsonNet(JsonSerializerSettings settings, bool readable = false, int indent = 2)
         {
+            if (indent < 0) throw new ArgumentOutOfRangeException(nameof(indent));
+
             Settings = settings ?? throw new ArgumentNullException(nameof(settings));
             Readable = readable;
+            Indent = indent;
         }
 
         public override string Serialize(object target)

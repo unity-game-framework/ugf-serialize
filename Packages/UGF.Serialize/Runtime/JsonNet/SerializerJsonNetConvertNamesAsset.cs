@@ -31,7 +31,7 @@ namespace UGF.Serialize.Runtime.JsonNet
 
         protected override ISerializer<string> OnBuildTyped()
         {
-            var serializer = new SerializerJsonNetConvertNames(Readable);
+            var serializer = new SerializerJsonNetConvertNames(Readable, Indent);
 
             SetupNames(serializer);
 

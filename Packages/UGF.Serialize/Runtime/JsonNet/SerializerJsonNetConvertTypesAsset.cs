@@ -44,7 +44,7 @@ namespace UGF.Serialize.Runtime.JsonNet
 
             settings.SerializationBinder = binder;
 
-            var serializer = new SerializerJsonNetConvertNames(settings, Readable);
+            var serializer = new SerializerJsonNetConvertNames(settings, Readable, Indent);
 
             SetupNames(serializer);
 
