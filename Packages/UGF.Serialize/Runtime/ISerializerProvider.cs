@@ -14,24 +14,24 @@ namespace UGF.Serialize.Runtime
         int DataTypesCount { get; }
 
         /// <summary>
-        /// Adds the specified serialize by the specified name.
+        /// Adds the specified serialize by the specified id.
         /// </summary>
-        /// <param name="name">The name of the serializer.</param>
+        /// <param name="id">The id of the serializer.</param>
         /// <param name="serializer">The serializer to add.</param>
-        void Add(string name, ISerializer serializer);
+        void Add(string id, ISerializer serializer);
 
         /// <summary>
-        /// Removes a serializer by the specified name.
+        /// Removes a serializer by the specified id.
         /// </summary>
-        /// <param name="name">The name of the serializer.</param>
-        bool Remove<T>(string name);
+        /// <param name="id">The id of the serializer.</param>
+        bool Remove<T>(string id);
 
         /// <summary>
-        /// Removes a serializer by the specified name and that support the specified type of the data.
+        /// Removes a serializer by the specified id and that support the specified type of the data.
         /// </summary>
         /// <param name="dataType">The type of the data that serializer support.</param>
-        /// <param name="name">The name of the serializer.</param>
-        bool Remove(Type dataType, string name);
+        /// <param name="id">The id of the serializer.</param>
+        bool Remove(Type dataType, string id);
 
         /// <summary>
         /// Removes all serializers.
@@ -50,32 +50,32 @@ namespace UGF.Serialize.Runtime
         void Clear(Type dataType);
 
         /// <summary>
-        /// Gets the serializer by the specified name and that support the specified type of the data.
+        /// Gets the serializer by the specified id and that support the specified type of the data.
         /// </summary>
-        /// <param name="name">The name of the serializer.</param>
-        ISerializer<T> Get<T>(string name);
+        /// <param name="id">The id of the serializer.</param>
+        ISerializer<T> Get<T>(string id);
 
         /// <summary>
-        /// Gets the serializer by the specified name and that support the specified type of the data.
+        /// Gets the serializer by the specified id and that support the specified type of the data.
         /// </summary>
         /// <param name="dataType">The type of the data that serializer support.</param>
-        /// <param name="name">The name of the serializer.</param>
-        ISerializer Get(Type dataType, string name);
+        /// <param name="id">The id of the serializer.</param>
+        ISerializer Get(Type dataType, string id);
 
         /// <summary>
-        /// Tries to get the serializer by the specified name and that support the specified type of the data.
+        /// Tries to get the serializer by the specified id and that support the specified type of the data.
         /// </summary>
-        /// <param name="name">The name of the serializer.</param>
+        /// <param name="id">The id of the serializer.</param>
         /// <param name="serializer">The found serializer.</param>
-        bool TryGet<T>(string name, out ISerializer<T> serializer);
+        bool TryGet<T>(string id, out ISerializer<T> serializer);
 
         /// <summary>
-        /// Tries to get the serializer by the specified name and that support the specified type of the data.
+        /// Tries to get the serializer by the specified id and that support the specified type of the data.
         /// </summary>
         /// <param name="dataType">The type of the data that serializer support.</param>
-        /// <param name="name">The name of the serializer.</param>
+        /// <param name="id">The id of the serializer.</param>
         /// <param name="serializer">The found serializer.</param>
-        bool TryGet(Type dataType, string name, out ISerializer serializer);
+        bool TryGet(Type dataType, string id, out ISerializer serializer);
 
         /// <summary>
         /// Gets the collection of the serializers which support the specified type of the data.
@@ -102,17 +102,17 @@ namespace UGF.Serialize.Runtime
         bool TryGetSerializers(Type dataType, out IReadOnlyDictionary<string, ISerializer> serializers);
 
         /// <summary>
-        /// Gets the name of the specified serializer.
+        /// Gets the id of the specified serializer.
         /// </summary>
         /// <param name="serializer">The serializer to get name of.</param>
-        string GetName(ISerializer serializer);
+        string GetId(ISerializer serializer);
 
         /// <summary>
-        /// Tries to get the name of the specified serializer.
+        /// Tries to get the id of the specified serializer.
         /// </summary>
-        /// <param name="serializer">The serializer to get name of.</param>
-        /// <param name="name">The found name.</param>
-        bool TryGetName(ISerializer serializer, out string name);
+        /// <param name="serializer">The serializer to get id of.</param>
+        /// <param name="id">The found id.</param>
+        bool TryGetId(ISerializer serializer, out string id);
 
         /// <summary>
         /// Gets the collection of the all types of the data.
