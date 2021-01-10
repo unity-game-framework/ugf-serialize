@@ -1,4 +1,5 @@
-﻿using UGF.EditorTools.Editor.IMGUI;
+﻿#if UGF_SERIALIZE_JSONNET
+using UGF.EditorTools.Editor.IMGUI;
 using UGF.Serialize.Runtime.JsonNet;
 using UnityEditor;
 
@@ -33,3 +34,4 @@ namespace UGF.Serialize.Editor.JsonNet
         }
     }
 }
+#endif
