@@ -2,7 +2,7 @@
 
 namespace UGF.Serialize.Runtime
 {
-    public abstract class SerializerAsset<TData> : SerializerAsset, IBuilder<ISerializer<TData>>
+    public abstract class SerializerBuilder<TData> : SerializerBuilderBase, IBuilder<ISerializer<TData>>
     {
         public new ISerializer<TData> Build()
         {
