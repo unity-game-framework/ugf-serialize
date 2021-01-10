@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/3.0.0) - 2021-01-10  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/9?closed=1)  
+    
+
+### Added
+
+- Add serializer builder ([#39](https://github.com/unity-game-framework/ugf-serialize/pull/39))  
+    - Add `SerializerBuilderBase` and `SerializerBuilder<TData>`.
+    - Add implementation of `IBuilder<ISerializer<TData>>` for `SerializerAsset<TData>` class.
+
+### Removed
+
+- Remove name and data type from serializer builder ([#38](https://github.com/unity-game-framework/ugf-serialize/pull/38))  
+    - Remove `Name` and `DataType` properties from `ISerializerBuilder`.
+    - Change `ISerializerProvider` to work with ids instead of names.
+
 ## [2.1.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/2.1.0) - 2020-12-22  
 
 ### Release Notes
