@@ -17,10 +17,5 @@ namespace UGF.Serialize.Runtime.Unity
         {
             return Encoding.Default;
         }
-
-        private void Reset()
-        {
-            Name = "unity-json-bytes";
-        }
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-
-namespace UGF.Serialize.Runtime
+﻿namespace UGF.Serialize.Runtime
 {
     public abstract class SerializerAsset<TData> : SerializerAsset
     {
-        public override Type DataType { get; } = typeof(TData);
-
         public new ISerializer<TData> Build()
         {
             return OnBuildTyped();

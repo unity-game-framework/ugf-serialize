@@ -14,10 +14,5 @@ namespace UGF.Serialize.Editor.Unity
         {
             return new SerializerUnityJsonEditor(m_readable);
         }
-
-        private void Reset()
-        {
-            Name = "unity-json-text-editor";
-        }
     }
 }
