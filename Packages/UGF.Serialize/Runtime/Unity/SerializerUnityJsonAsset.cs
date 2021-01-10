@@ -13,10 +13,5 @@ namespace UGF.Serialize.Runtime.Unity
         {
             return new SerializerUnityJson(m_readable);
         }
-
-        private void Reset()
-        {
-            Name = "unity-json-text";
-        }
     }
 }

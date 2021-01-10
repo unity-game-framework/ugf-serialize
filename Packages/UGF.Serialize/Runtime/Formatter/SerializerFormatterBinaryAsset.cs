@@ -18,10 +18,5 @@ namespace UGF.Serialize.Runtime.Formatter
         {
             return new BinaryFormatter();
         }
-
-        private void Reset()
-        {
-            Name = "formatter-binary";
-        }
     }
 }

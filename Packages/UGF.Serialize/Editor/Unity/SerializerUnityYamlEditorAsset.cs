@@ -10,10 +10,5 @@ namespace UGF.Serialize.Editor.Unity
         {
             return new SerializerUnityYamlEditor();
         }
-
-        private void Reset()
-        {
-            Name = "unity-yaml-text-editor";
-        }
     }
 }

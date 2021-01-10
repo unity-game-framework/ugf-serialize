@@ -16,11 +16,6 @@ namespace UGF.Serialize.Runtime.JsonNet
         {
             return new SerializerJsonNet(m_readable, m_indent);
         }
-
-        private void Reset()
-        {
-            Name = "jsonnet-text";
-        }
     }
 }
 #endif

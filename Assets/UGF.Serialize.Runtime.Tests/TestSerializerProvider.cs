@@ -206,8 +206,8 @@ namespace UGF.Serialize.Runtime.Tests
             provider.Add("text", text);
             provider.Add("bytes", bytes);
 
-            string name0 = provider.GetName(text);
-            string name1 = provider.GetName(bytes);
+            string name0 = provider.GetId(text);
+            string name1 = provider.GetId(bytes);
 
             Assert.AreEqual("text", name0);
             Assert.AreEqual("bytes", name1);
@@ -223,8 +223,8 @@ namespace UGF.Serialize.Runtime.Tests
             provider.Add("text", text);
             provider.Add("bytes", bytes);
 
-            bool result0 = provider.TryGetName(text, out string name0);
-            bool result1 = provider.TryGetName(bytes, out string name1);
+            bool result0 = provider.TryGetId(text, out string name0);
+            bool result1 = provider.TryGetId(bytes, out string name1);
 
             Assert.True(result0);
             Assert.True(result1);
