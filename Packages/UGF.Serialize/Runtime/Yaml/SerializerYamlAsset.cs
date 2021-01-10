@@ -10,11 +10,6 @@ namespace UGF.Serialize.Runtime.Yaml
         {
             return new SerializerYaml();
         }
-
-        private void Reset()
-        {
-            Name = "yaml-text";
-        }
     }
 }
 #endif
