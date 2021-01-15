@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/4.0.0) - 2021-01-15  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/11?closed=1)  
+    
+
+### Removed
+
+- Move other implementations to separate packages ([#44](https://github.com/unity-game-framework/ugf-serialize/pull/44))  
+    - Remove `JsonNet` and `YamlDotNet` implementation. (This serializers will be available as standalone packages.)
+
 ## [3.0.2](https://github.com/unity-game-framework/ugf-serialize/releases/tag/3.0.2) - 2021-01-10  
 
 ### Release Notes
