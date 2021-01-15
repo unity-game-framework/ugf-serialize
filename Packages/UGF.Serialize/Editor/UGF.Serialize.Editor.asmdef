@@ -15,12 +15,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [
-        {
-            "name": "com.ugf.jsonnet",
-            "expression": "1.2.2",
-            "define": "UGF_SERIALIZE_JSONNET"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }
