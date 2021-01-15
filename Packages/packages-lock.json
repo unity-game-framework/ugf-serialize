@@ -14,15 +14,6 @@
       "dependencies": {},
       "url": "https://api.bintray.com/npm/unity-game-framework/public"
     },
-    "com.ugf.jsonnet": {
-      "version": "1.2.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0"
-      },
-      "url": "https://api.bintray.com/npm/unity-game-framework/public"
-    },
     "com.ugf.serialize": {
       "version": "file:UGF.Serialize",
       "depth": 0,
@@ -31,13 +22,6 @@
         "com.ugf.builder": "2.0.0",
         "com.ugf.editortools": "1.8.1"
       }
-    },
-    "com.ugf.yaml": {
-      "version": "1.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://api.bintray.com/npm/unity-game-framework/public"
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
@@ -53,13 +37,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.1"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
