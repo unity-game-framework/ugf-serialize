@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace UGF.Serialize.Runtime.Tests
 {
+    [Obsolete]
     public class TestSerializerProvider
     {
         private class SerializerText : SerializerBase<string>
