@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git://github.com/unity-game-framework/ugf-serialize.git"
   },
-  "changelogUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/changelog.md",
-  "licensesUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/master/license",
+  "changelogUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/main/changelog.md",
+  "licensesUrl": "https://github.com/unity-game-framework/ugf-serialize/blob/main/license",
   "publishConfig": {
     "registry": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
   },
