@@ -1,13 +1,12 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using UGF.Serialize.Runtime.Bytes;
 using UGF.Serialize.Runtime.Unity;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace UGF.Serialize.Runtime.Tests.Unity
+namespace UGF.Serialize.Runtime.Tests.Bytes
 {
     public class TestSerializerTextToBytes
     {
@@ -26,7 +25,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Serialize()
         {
-            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -38,7 +37,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Deserialize()
         {
-            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -52,7 +51,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator SerializeAsync()
         {
-            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             Task<byte[]> task = serializer.SerializeAsync(target);
@@ -71,7 +70,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [UnityTest]
         public IEnumerator DeserializeAsync()
         {
-            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -93,7 +92,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         [Test]
         public void Copy()
         {
-            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
+            var serializer = new SerializerUnityJsonBytes();
             var target = new Target();
 
             Target copy = SerializeUtility.Copy(target, serializer);
