@@ -7,6 +7,7 @@ namespace UGF.Serialize.Runtime
     /// <summary>
     /// Represents provider of the serializers.
     /// </summary>
+    [Obsolete("ISerializerProvider has been deprecated. Use 'IProvider' from 'UGF.RuntimeTools' instead.")]
     public class SerializerProvider : ISerializerProvider
     {
         public int DataTypesCount { get { return m_serializers.Count; } }
