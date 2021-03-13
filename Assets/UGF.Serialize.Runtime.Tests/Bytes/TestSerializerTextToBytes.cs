@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using UGF.Serialize.Runtime.Bytes;
 using UGF.Serialize.Runtime.Unity;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -25,7 +26,7 @@ namespace UGF.Serialize.Runtime.Tests.Bytes
         [Test]
         public void Serialize()
         {
-            var serializer = new SerializerUnityJsonBytes();
+            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -37,7 +38,7 @@ namespace UGF.Serialize.Runtime.Tests.Bytes
         [Test]
         public void Deserialize()
         {
-            var serializer = new SerializerUnityJsonBytes();
+            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -51,7 +52,7 @@ namespace UGF.Serialize.Runtime.Tests.Bytes
         [UnityTest]
         public IEnumerator SerializeAsync()
         {
-            var serializer = new SerializerUnityJsonBytes();
+            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
             var target = new Target();
 
             Task<byte[]> task = serializer.SerializeAsync(target);
@@ -70,7 +71,7 @@ namespace UGF.Serialize.Runtime.Tests.Bytes
         [UnityTest]
         public IEnumerator DeserializeAsync()
         {
-            var serializer = new SerializerUnityJsonBytes();
+            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
             var target = new Target();
 
             byte[] bytes = serializer.Serialize(target);
@@ -92,7 +93,7 @@ namespace UGF.Serialize.Runtime.Tests.Bytes
         [Test]
         public void Copy()
         {
-            var serializer = new SerializerUnityJsonBytes();
+            var serializer = new SerializerTextToBytes(new SerializerUnityJson());
             var target = new Target();
 
             Target copy = SerializeUtility.Copy(target, serializer);
