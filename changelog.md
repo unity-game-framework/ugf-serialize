@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/4.1.0) - 2021-03-13  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/12?closed=1)  
+    
+
+### Added
+
+- Add text to bytes serializer ([#51](https://github.com/unity-game-framework/ugf-serialize/pull/51))  
+    - Add `SerializerTextToBytes` used with `ISerializer<string>` to convert text to bytes array using any text serializer.
+    - Add `SerializerTextToBytesAsset` asset to build text to bytes serializer.
+
+### Changed
+
+- Update publish registry ([#50](https://github.com/unity-game-framework/ugf-serialize/pull/50))  
+    - Update package publish registry.
+
+### Deprecated
+
+- Deprecate serializer provider ([#53](https://github.com/unity-game-framework/ugf-serialize/pull/53))  
+    - Deprecate `SerializerProvider` and `ISerializerProvider` classes use `IProvider<TKey, TValue>` from _UGF.RuntimeTools_ package instead.
+
 ## [4.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/4.0.0) - 2021-01-15  
 
 ### Release Notes
