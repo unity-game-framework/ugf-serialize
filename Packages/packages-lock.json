@@ -5,14 +5,14 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://api.bintray.com/npm/unity-game-framework/public"
+      "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
     },
     "com.ugf.editortools": {
       "version": "1.8.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://api.bintray.com/npm/unity-game-framework/public"
+      "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
     },
     "com.ugf.serialize": {
       "version": "file:UGF.Serialize",
@@ -31,16 +31,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.3",
+      "version": "3.0.5",
       "depth": 0,
       "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.1"
-      },
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.20",
+      "version": "1.1.24",
       "depth": 0,
       "source": "registry",
       "dependencies": {
