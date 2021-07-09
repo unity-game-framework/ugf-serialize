@@ -19,6 +19,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
         "com.ugf.builder": "2.0.0",
         "com.ugf.editortools": "1.8.1"
       }
