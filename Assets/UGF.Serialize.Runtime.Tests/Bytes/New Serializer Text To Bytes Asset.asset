@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: New Serializer Text To Bytes Asset
   m_EditorClassIdentifier: 
   m_text: {fileID: 0}
+  m_encoding: 0
