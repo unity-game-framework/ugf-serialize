@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using UGF.RuntimeTools.Runtime.Contexts;
 using Unity.Profiling;
 
 namespace UGF.Serialize.Runtime.Bytes
@@ -31,31 +32,31 @@ namespace UGF.Serialize.Runtime.Bytes
             Serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
         }
 
-        protected override object OnSerialize(object target)
+        protected override object OnSerialize(object target, IContext context)
         {
-            return InternalSerialize(Encoding, Serializer, target);
+            return InternalSerialize(Encoding, Serializer, target, context);
         }
 
-        protected override object OnDeserialize(Type targetType, byte[] data)
+        protected override object OnDeserialize(Type targetType, byte[] data, IContext context)
         {
-            return InternalDeserialize(Encoding, Serializer, targetType, data);
+            return InternalDeserialize(Encoding, Serializer, targetType, data, context);
         }
 
-        protected override Task<byte[]> OnSerializeAsync(object target)
+        protected override Task<byte[]> OnSerializeAsync(object target, IContext context)
         {
-            return Task.Run(() => InternalSerialize(Encoding, Serializer, target));
+            return Task.Run(() => InternalSerialize(Encoding, Serializer, target, context));
         }
 
-        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data, IContext context)
         {
-            return Task.Run(() => InternalDeserialize(Encoding, Serializer, targetType, data));
+            return Task.Run(() => InternalDeserialize(Encoding, Serializer, targetType, data, context));
         }
 
-        private static byte[] InternalSerialize(Encoding encoding, ISerializer<string> serializer, object target)
+        private static byte[] InternalSerialize(Encoding encoding, ISerializer<string> serializer, object target, IContext context)
         {
             m_markerSerialize.Begin();
 
-            string text = serializer.Serialize(target);
+            string text = serializer.Serialize(target, context);
             byte[] result = encoding.GetBytes(text);
 
             m_markerSerialize.End();
@@ -63,12 +64,12 @@ namespace UGF.Serialize.Runtime.Bytes
             return result;
         }
 
-        private static object InternalDeserialize(Encoding encoding, ISerializer<string> serializer, Type targetType, byte[] data)
+        private static object InternalDeserialize(Encoding encoding, ISerializer<string> serializer, Type targetType, byte[] data, IContext context)
         {
             m_markerDeserialize.Begin();
 
             string text = encoding.GetString(data);
-            object result = serializer.Deserialize(targetType, text);
+            object result = serializer.Deserialize(targetType, text, context);
 
             m_markerDeserialize.End();
 

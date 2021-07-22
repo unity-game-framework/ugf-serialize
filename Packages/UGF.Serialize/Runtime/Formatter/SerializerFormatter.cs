@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
+using UGF.RuntimeTools.Runtime.Contexts;
 using Unity.Profiling;
 
 namespace UGF.Serialize.Runtime.Formatter
@@ -45,22 +46,22 @@ namespace UGF.Serialize.Runtime.Formatter
             Formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));
         }
 
-        protected override object OnSerialize(object target)
+        protected override object OnSerialize(object target, IContext context)
         {
             return InternalSerialize(Formatter, target);
         }
 
-        protected override object OnDeserialize(Type targetType, byte[] data)
+        protected override object OnDeserialize(Type targetType, byte[] data, IContext context)
         {
             return InternalDeserialize(Formatter, targetType, data);
         }
 
-        protected override Task<byte[]> OnSerializeAsync(object target)
+        protected override Task<byte[]> OnSerializeAsync(object target, IContext context)
         {
             return Task.Run(() => InternalSerialize(Formatter, target));
         }
 
-        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data, IContext context)
         {
             return Task.Run(() => InternalDeserialize(Formatter, targetType, data));
         }

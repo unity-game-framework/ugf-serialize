@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using UGF.RuntimeTools.Runtime.Contexts;
 using UGF.Serialize.Editor.Unity;
 using UGF.Serialize.Runtime;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
             var serialize = new SerializerUnityJsonEditor();
             var target = new Target();
 
-            string text = serialize.Serialize(target);
+            string text = serialize.Serialize(target, new Context());
 
             Assert.NotNull(text);
             Assert.Greater(text.Length, 0);
@@ -38,8 +39,8 @@ namespace UGF.Serialize.Editor.Tests.Unity
             var serialize = new SerializerUnityJsonEditor();
             var target = new Target();
 
-            string text = serialize.Serialize(target);
-            var target0 = serialize.Deserialize<Target>(text);
+            string text = serialize.Serialize(target, new Context());
+            var target0 = serialize.Deserialize<Target>(text, new Context());
 
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
@@ -51,7 +52,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
         {
             var serialize = new SerializerUnityJsonEditor();
 
-            var target = serialize.Deserialize<Target>(string.Empty);
+            var target = serialize.Deserialize<Target>(string.Empty, new Context());
 
             Assert.NotNull(target);
             Assert.IsInstanceOf<Target>(target);
@@ -63,7 +64,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
             var serialize = new SerializerUnityJsonEditor();
             var target = ScriptableObject.CreateInstance<TestSerializerUnityYamlEditorTarget>();
 
-            string text = serialize.Serialize(target);
+            string text = serialize.Serialize(target, new Context());
 
             Assert.NotNull(text);
             Assert.Greater(text.Length, 0);
@@ -75,8 +76,8 @@ namespace UGF.Serialize.Editor.Tests.Unity
             var serialize = new SerializerUnityJsonEditor();
             var target = ScriptableObject.CreateInstance<TestSerializerUnityYamlEditorTarget>();
 
-            string text = serialize.Serialize(target);
-            var target0 = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(text);
+            string text = serialize.Serialize(target, new Context());
+            var target0 = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(text, new Context());
 
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
@@ -88,7 +89,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
         {
             var serialize = new SerializerUnityJsonEditor();
 
-            var target = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty);
+            var target = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty, new Context());
 
             Assert.NotNull(target);
             Assert.IsInstanceOf<TestSerializerUnityYamlEditorTarget>(target);
@@ -100,7 +101,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
             var serializer = new SerializerUnityJsonEditor();
             var target = new Target();
 
-            Target copy = SerializeUtility.Copy(target, serializer);
+            Target copy = SerializeUtility.Copy(target, serializer, new Context());
 
             Assert.NotNull(copy);
             Assert.AreNotEqual(copy, target);

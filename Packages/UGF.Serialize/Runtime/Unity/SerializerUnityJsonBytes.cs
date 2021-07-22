@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using UGF.RuntimeTools.Runtime.Contexts;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -44,22 +45,22 @@ namespace UGF.Serialize.Runtime.Unity
             Encoding = encoding ?? throw new ArgumentNullException(nameof(encoding));
         }
 
-        protected override object OnSerialize(object target)
+        protected override object OnSerialize(object target, IContext context)
         {
             return InternalSerialize(Encoding, target);
         }
 
-        protected override object OnDeserialize(Type targetType, byte[] data)
+        protected override object OnDeserialize(Type targetType, byte[] data, IContext context)
         {
             return InternalDeserialize(Encoding, targetType, data);
         }
 
-        protected override Task<byte[]> OnSerializeAsync(object target)
+        protected override Task<byte[]> OnSerializeAsync(object target, IContext context)
         {
             return Task.Run(() => InternalSerialize(Encoding, target));
         }
 
-        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data, IContext context)
         {
             return Task.Run(() => InternalDeserialize(Encoding, targetType, data));
         }

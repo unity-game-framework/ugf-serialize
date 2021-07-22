@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using UGF.RuntimeTools.Runtime.Contexts;
 
 namespace UGF.Serialize.Runtime.Tests
 {
@@ -7,12 +8,12 @@ namespace UGF.Serialize.Runtime.Tests
     {
         private class Target : Serializer<string>
         {
-            protected override object OnSerialize(object target)
+            protected override object OnSerialize(object target, IContext context)
             {
                 return null;
             }
 
-            protected override object OnDeserialize(Type targetType, string data)
+            protected override object OnDeserialize(Type targetType, string data, IContext context)
             {
                 return null;
             }
