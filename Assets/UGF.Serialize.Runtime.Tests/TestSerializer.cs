@@ -7,12 +7,12 @@ namespace UGF.Serialize.Runtime.Tests
     {
         private class Target : Serializer<string>
         {
-            public override string Serialize(object target)
+            protected override object OnSerialize(object target)
             {
                 return null;
             }
 
-            public override object Deserialize(Type targetType, string data)
+            protected override object OnDeserialize(Type targetType, string data)
             {
                 return null;
             }

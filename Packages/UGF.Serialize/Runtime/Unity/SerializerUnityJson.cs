@@ -35,30 +35,28 @@ namespace UGF.Serialize.Runtime.Unity
             Readable = readable;
         }
 
-        public override string Serialize(object target)
+        protected override object OnSerialize(object target)
         {
             return InternalSerialize(target, Readable);
         }
 
-        public override object Deserialize(Type targetType, string data)
+        protected override object OnDeserialize(Type targetType, string data)
         {
             return InternalDeserialize(targetType, data);
         }
 
-        public override Task<string> SerializeAsync(object target)
+        protected override Task<string> OnSerializeAsync(object target)
         {
             return Task.Run(() => InternalSerialize(target, Readable));
         }
 
-        public override Task<object> DeserializeAsync(Type targetType, string data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, string data)
         {
             return Task.Run(() => InternalDeserialize(targetType, data));
         }
 
         private static string InternalSerialize(object target, bool readable)
         {
-            if (target == null) throw new ArgumentNullException(nameof(target));
-
             m_markerSerialize.Begin();
 
             string result = JsonUtility.ToJson(target, readable);
@@ -70,9 +68,6 @@ namespace UGF.Serialize.Runtime.Unity
 
         private static object InternalDeserialize(Type targetType, string data)
         {
-            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
             m_markerDeserialize.Begin();
 
             object target = JsonUtility.FromJson(data, targetType);
