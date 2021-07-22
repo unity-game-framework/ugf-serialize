@@ -68,6 +68,8 @@ namespace UGF.Serialize.Runtime.Unity
 
         private static object InternalDeserialize(Type targetType, string data)
         {
+            if (data == string.Empty) data = "{}";
+
             m_markerDeserialize.Begin();
 
             object target = JsonUtility.FromJson(data, targetType);

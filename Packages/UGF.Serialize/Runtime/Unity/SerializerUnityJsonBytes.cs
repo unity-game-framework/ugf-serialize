@@ -80,7 +80,7 @@ namespace UGF.Serialize.Runtime.Unity
         {
             m_markerDeserialize.Begin();
 
-            string text = encoding.GetString(data);
+            string text = data.Length > 0 ? encoding.GetString(data) : "{}";
             object result = JsonUtility.FromJson(text, targetType);
 
             m_markerDeserialize.End();

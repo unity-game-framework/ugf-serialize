@@ -48,6 +48,20 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
         }
 
+        [Test]
+        public void DeserializeEmpty()
+        {
+            var serialize = new SerializerUnityJson();
+
+            var target0 = serialize.Deserialize<Target>(string.Empty);
+            var target1 = serialize.Deserialize<Target>("{}");
+
+            Assert.NotNull(target0);
+            Assert.NotNull(target1);
+            Assert.IsInstanceOf<Target>(target0);
+            Assert.IsInstanceOf<Target>(target1);
+        }
+
         [UnityTest]
         public IEnumerator SerializeAsync()
         {

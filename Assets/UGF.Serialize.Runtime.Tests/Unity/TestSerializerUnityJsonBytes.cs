@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using UGF.Serialize.Runtime.Unity;
@@ -47,6 +46,20 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
+        }
+
+        [Test]
+        public void DeserializeEmpty()
+        {
+            var serialize = new SerializerUnityJsonBytes();
+
+            var target0 = serialize.Deserialize<Target>(Array.Empty<byte>());
+            var target1 = serialize.Deserialize<Target>(Array.Empty<byte>());
+
+            Assert.NotNull(target0);
+            Assert.NotNull(target1);
+            Assert.IsInstanceOf<Target>(target0);
+            Assert.IsInstanceOf<Target>(target1);
         }
 
         [UnityTest]

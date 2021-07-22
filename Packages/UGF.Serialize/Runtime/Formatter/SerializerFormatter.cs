@@ -52,7 +52,7 @@ namespace UGF.Serialize.Runtime.Formatter
 
         protected override object OnDeserialize(Type targetType, byte[] data)
         {
-            return InternalDeserialize(Formatter, data);
+            return InternalDeserialize(Formatter, targetType, data);
         }
 
         protected override Task<byte[]> OnSerializeAsync(object target)
@@ -62,7 +62,7 @@ namespace UGF.Serialize.Runtime.Formatter
 
         protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
         {
-            return Task.Run(() => InternalDeserialize(Formatter, data));
+            return Task.Run(() => InternalDeserialize(Formatter, targetType, data));
         }
 
         private static byte[] InternalSerialize(IFormatter formatter, object target)
@@ -80,12 +80,22 @@ namespace UGF.Serialize.Runtime.Formatter
             return result;
         }
 
-        private static object InternalDeserialize(IFormatter formatter, byte[] data)
+        private static object InternalDeserialize(IFormatter formatter, Type targetType, byte[] data)
         {
             m_markerDeserialize.Begin();
 
-            using var stream = new MemoryStream(data);
-            object result = formatter.Deserialize(stream);
+            object result;
+
+            if (data.Length > 0)
+            {
+                using var stream = new MemoryStream(data);
+
+                result = formatter.Deserialize(stream);
+            }
+            else
+            {
+                result = Activator.CreateInstance(targetType);
+            }
 
             m_markerDeserialize.End();
 

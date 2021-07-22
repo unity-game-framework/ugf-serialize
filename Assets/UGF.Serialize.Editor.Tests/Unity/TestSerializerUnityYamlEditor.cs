@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using UGF.Serialize.Editor.Unity;
 using UGF.Serialize.Runtime;
 using UnityEngine;
@@ -31,6 +32,14 @@ namespace UGF.Serialize.Editor.Tests.Unity
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
+        }
+
+        [Test]
+        public void DeserializeEmpty()
+        {
+            var serialize = new SerializerUnityYamlEditor();
+
+            Assert.Throws<NotSupportedException>(() => serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty));
         }
 
         [Test]
