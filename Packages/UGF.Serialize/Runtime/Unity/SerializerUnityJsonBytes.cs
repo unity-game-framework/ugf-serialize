@@ -9,7 +9,7 @@ namespace UGF.Serialize.Runtime.Unity
     /// <summary>
     /// Represents serializer that use <see cref="JsonUtility"/> to serialize a specified target to Json representation and convert to byte array.
     /// </summary>
-    public class SerializerUnityJsonBytes : SerializerAsyncBase<byte[]>
+    public class SerializerUnityJsonBytes : SerializerAsync<byte[]>
     {
         /// <summary>
         /// Gets the encoding used to convert Json data to byte array.
@@ -44,31 +44,28 @@ namespace UGF.Serialize.Runtime.Unity
             Encoding = encoding ?? throw new ArgumentNullException(nameof(encoding));
         }
 
-        public override byte[] Serialize(object target)
+        protected override object OnSerialize(object target)
         {
             return InternalSerialize(Encoding, target);
         }
 
-        public override object Deserialize(Type targetType, byte[] data)
+        protected override object OnDeserialize(Type targetType, byte[] data)
         {
             return InternalDeserialize(Encoding, targetType, data);
         }
 
-        public override Task<byte[]> SerializeAsync(object target)
+        protected override Task<byte[]> OnSerializeAsync(object target)
         {
             return Task.Run(() => InternalSerialize(Encoding, target));
         }
 
-        public override Task<object> DeserializeAsync(Type targetType, byte[] data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
         {
             return Task.Run(() => InternalDeserialize(Encoding, targetType, data));
         }
 
         private static byte[] InternalSerialize(Encoding encoding, object target)
         {
-            if (encoding == null) throw new ArgumentNullException(nameof(encoding));
-            if (target == null) throw new ArgumentNullException(nameof(target));
-
             m_markerSerialize.Begin();
 
             string text = JsonUtility.ToJson(target);
@@ -81,10 +78,6 @@ namespace UGF.Serialize.Runtime.Unity
 
         private static object InternalDeserialize(Encoding encoding, Type targetType, byte[] data)
         {
-            if (encoding == null) throw new ArgumentNullException(nameof(encoding));
-            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
             m_markerDeserialize.Begin();
 
             string text = encoding.GetString(data);

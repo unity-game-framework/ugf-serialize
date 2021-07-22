@@ -8,27 +8,27 @@ namespace UGF.Serialize.Runtime.Tests
     [Obsolete]
     public class TestSerializerProvider
     {
-        private class SerializerText : SerializerBase<string>
+        private class SerializerText : Serializer<string>
         {
-            public override string Serialize(object target)
+            protected override object OnSerialize(object target)
             {
                 return null;
             }
 
-            public override object Deserialize(Type targetType, string data)
+            protected override object OnDeserialize(Type targetType, string data)
             {
                 return null;
             }
         }
 
-        private class SerializeBytes : SerializerBase<byte[]>
+        private class SerializeBytes : Serializer<byte[]>
         {
-            public override byte[] Serialize(object target)
+            protected override object OnSerialize(object target)
             {
                 return null;
             }
 
-            public override object Deserialize(Type targetType, byte[] data)
+            protected override object OnDeserialize(Type targetType, byte[] data)
             {
                 return null;
             }

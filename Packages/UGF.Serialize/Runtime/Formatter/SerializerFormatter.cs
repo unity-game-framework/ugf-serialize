@@ -10,7 +10,7 @@ namespace UGF.Serialize.Runtime.Formatter
     /// <summary>
     /// Represents serialized that use formatter to serialize a specified target to byte array and vice versa.
     /// </summary>
-    public class SerializerFormatter : SerializerAsyncBase<byte[]>
+    public class SerializerFormatter : SerializerAsync<byte[]>
     {
         /// <summary>
         /// Gets the formatter used to convert target to byte array and vice versa.
@@ -45,31 +45,28 @@ namespace UGF.Serialize.Runtime.Formatter
             Formatter = formatter ?? throw new ArgumentNullException(nameof(formatter));
         }
 
-        public override byte[] Serialize(object target)
+        protected override object OnSerialize(object target)
         {
             return InternalSerialize(Formatter, target);
         }
 
-        public override object Deserialize(Type targetType, byte[] data)
+        protected override object OnDeserialize(Type targetType, byte[] data)
         {
             return InternalDeserialize(Formatter, data);
         }
 
-        public override Task<byte[]> SerializeAsync(object target)
+        protected override Task<byte[]> OnSerializeAsync(object target)
         {
             return Task.Run(() => InternalSerialize(Formatter, target));
         }
 
-        public override Task<object> DeserializeAsync(Type targetType, byte[] data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, byte[] data)
         {
             return Task.Run(() => InternalDeserialize(Formatter, data));
         }
 
         private static byte[] InternalSerialize(IFormatter formatter, object target)
         {
-            if (formatter == null) throw new ArgumentNullException(nameof(formatter));
-            if (target == null) throw new ArgumentNullException(nameof(target));
-
             m_markerSerialize.Begin();
 
             using var stream = new MemoryStream();
@@ -85,9 +82,6 @@ namespace UGF.Serialize.Runtime.Formatter
 
         private static object InternalDeserialize(IFormatter formatter, byte[] data)
         {
-            if (formatter == null) throw new ArgumentNullException(nameof(formatter));
-            if (data == null) throw new ArgumentNullException(nameof(data));
-
             m_markerDeserialize.Begin();
 
             using var stream = new MemoryStream(data);
