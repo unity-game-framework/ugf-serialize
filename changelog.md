@@ -5,6 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-preview](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.0.0-preview) - 2021-07-22  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/14?closed=1)  
+    
+
+### Added
+
+- Add encoding selection for serializers ([#64](https://github.com/unity-game-framework/ugf-serialize/pull/64))  
+    - Add encoding selection for `SerializerTextToBytesAsset` and `SerializerUnityJsonBytesAsset` serializer assets.
+    - Remove `SerializerUnityJsonBytesAsset.OnCreateEncoding()` method.
+- Add context object for serialize and deserialize methods ([#63](https://github.com/unity-game-framework/ugf-serialize/pull/63))  
+    - Change package Unity version to `2021.1`.
+    - Update dependencies: add `com.ugf.runtimetools` of `2.2.0` version.
+    - Add `IContext` object as argument for `Serialize`, `SerializeAsync`, `Deserialize` and `DeserializeAsync` methods of `ISerializer` and `ISerializerAsync` interfaces.
+    - Add `IContext` object as argument for `SerializeUtility.Copy` and `CopyAsync` methods.
+
+### Changed
+
+- Change serializers to work with empty data ([#62](https://github.com/unity-game-framework/ugf-serialize/pull/62))  
+    - Change `SerializerUnityYamlEditor` to throw not supported exception when deserialize empty data.
+    - Change `SerializerFormatter` to create empty object when deserialize with empty data.
+    - Change `SerializerUnityJson` and `SerializerUnityJsonBytes` to create empty object when deserialize with empty data.
+- Merge ISerializer and ISerializerAsync interfaces ([#60](https://github.com/unity-game-framework/ugf-serialize/pull/60))  
+    - Add `Serializer` as default abstract implementation of `ISerializer` interface.
+    - Add `ISerializerAsync` inheritance of `ISerializer` interface.
+    - Add `ISerializerAsync<T>` inheritance of `ISerializer<T>` interface.
+    - Add `SerializeUtility.CopyAsync` and `CopyAsync<T>` methods.
+    - Change name of `SerializerBase<T>` class to `Serializer<T>`.
+    - Change name of `SerializerAsyncBase<T>` class to `SerializerAsync<T>` .
+    - Change name of `SerializerBuilderBase` class to `SerializerBuilder`.
+
+### Removed
+
+- Remove serializer provider ([#61](https://github.com/unity-game-framework/ugf-serialize/pull/61))  
+    - Remove `SerializerProvider` and `ISerializerProvider` classes, use `IProvider<TKey, TValue>` from _UGF.RuntimeTools_ package instead.
+
 ## [4.1.1](https://github.com/unity-game-framework/ugf-serialize/releases/tag/4.1.1) - 2021-07-09  
 
 ### Release Notes
