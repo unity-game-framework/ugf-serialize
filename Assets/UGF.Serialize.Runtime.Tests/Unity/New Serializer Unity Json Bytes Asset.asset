@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb69df4392e64da88f8ff098b5656c63, type: 3}
   m_Name: New Serializer Unity Json Bytes Asset
   m_EditorClassIdentifier: 
-  m_name: unity-json-bytes
+  m_encoding: 0
