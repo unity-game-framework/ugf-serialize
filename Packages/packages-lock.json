@@ -14,6 +14,13 @@
       "dependencies": {},
       "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
     },
+    "com.ugf.runtimetools": {
+      "version": "2.2.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
+    },
     "com.ugf.serialize": {
       "version": "file:UGF.Serialize",
       "depth": 0,
@@ -21,7 +28,8 @@
       "dependencies": {
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.ugf.builder": "2.0.1",
-        "com.ugf.editortools": "1.11.1"
+        "com.ugf.editortools": "1.11.1",
+        "com.ugf.runtimetools": "2.2.0"
       }
     },
     "com.unity.ext.nunit": {
