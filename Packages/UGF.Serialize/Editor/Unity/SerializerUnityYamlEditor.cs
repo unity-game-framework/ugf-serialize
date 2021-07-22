@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace UGF.Serialize.Editor.Unity
 {
-    public class SerializerUnityYamlEditor : SerializerBase<string>
+    public class SerializerUnityYamlEditor : Serializer<string>
     {
         private static ProfilerMarker m_markerSerialize;
         private static ProfilerMarker m_markerDeserialize;

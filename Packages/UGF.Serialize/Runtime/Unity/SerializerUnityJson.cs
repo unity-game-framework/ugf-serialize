@@ -8,7 +8,7 @@ namespace UGF.Serialize.Runtime.Unity
     /// <summary>
     /// Represents serializer that use <see cref="JsonUtility"/> to serialize a specified target to Json representation and vice versa.
     /// </summary>
-    public class SerializerUnityJson : SerializerAsyncBase<string>
+    public class SerializerUnityJson : SerializerAsync<string>
     {
         /// <summary>
         /// Gets the value that determines whether to use readable layout of the Json.

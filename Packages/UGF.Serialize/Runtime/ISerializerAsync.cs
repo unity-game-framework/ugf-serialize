@@ -3,10 +3,8 @@ using System.Threading.Tasks;
 
 namespace UGF.Serialize.Runtime
 {
-    public interface ISerializerAsync
+    public interface ISerializerAsync : ISerializer
     {
-        Type DataType { get; }
-
         Task<object> SerializeAsync<T>(T target);
         Task<object> SerializeAsync(object target);
         Task<T> DeserializeAsync<T>(object data);

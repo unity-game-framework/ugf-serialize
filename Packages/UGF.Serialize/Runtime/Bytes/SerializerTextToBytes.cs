@@ -5,7 +5,7 @@ using Unity.Profiling;
 
 namespace UGF.Serialize.Runtime.Bytes
 {
-    public class SerializerTextToBytes : SerializerAsyncBase<byte[]>
+    public class SerializerTextToBytes : SerializerAsync<byte[]>
     {
         public Encoding Encoding { get; }
         public ISerializer<string> Serializer { get; }

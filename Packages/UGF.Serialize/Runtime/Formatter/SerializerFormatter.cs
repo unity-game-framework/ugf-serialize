@@ -10,7 +10,7 @@ namespace UGF.Serialize.Runtime.Formatter
     /// <summary>
     /// Represents serialized that use formatter to serialize a specified target to byte array and vice versa.
     /// </summary>
-    public class SerializerFormatter : SerializerAsyncBase<byte[]>
+    public class SerializerFormatter : SerializerAsync<byte[]>
     {
         /// <summary>
         /// Gets the formatter used to convert target to byte array and vice versa.

@@ -5,7 +5,7 @@ namespace UGF.Serialize.Runtime.Tests
 {
     public class TestSerializer
     {
-        private class Target : SerializerBase<string>
+        private class Target : Serializer<string>
         {
             public override string Serialize(object target)
             {

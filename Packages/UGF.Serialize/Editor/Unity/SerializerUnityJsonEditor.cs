@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UGF.Serialize.Editor.Unity
 {
-    public class SerializerUnityJsonEditor : SerializerBase<string>
+    public class SerializerUnityJsonEditor : Serializer<string>
     {
         public bool Readable { get; }
 

@@ -9,7 +9,7 @@ namespace UGF.Serialize.Runtime.Unity
     /// <summary>
     /// Represents serializer that use <see cref="JsonUtility"/> to serialize a specified target to Json representation and convert to byte array.
     /// </summary>
-    public class SerializerUnityJsonBytes : SerializerAsyncBase<byte[]>
+    public class SerializerUnityJsonBytes : SerializerAsync<byte[]>
     {
         /// <summary>
         /// Gets the encoding used to convert Json data to byte array.
