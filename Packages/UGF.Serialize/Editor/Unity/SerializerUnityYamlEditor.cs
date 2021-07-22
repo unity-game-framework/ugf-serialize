@@ -44,6 +44,8 @@ namespace UGF.Serialize.Editor.Unity
 
         private static object InternalDeserialize(string data)
         {
+            if (string.IsNullOrEmpty(data)) throw new NotSupportedException("Deserializing empty Yaml data into Unity object not supported.");
+
             m_markerDeserialize.Begin();
 
             object target = EditorYamlUtility.FromYaml(data);

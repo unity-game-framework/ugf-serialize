@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using UGF.Serialize.Editor.Unity;
 using UGF.Serialize.Runtime;
 using UnityEngine;
@@ -38,10 +39,7 @@ namespace UGF.Serialize.Editor.Tests.Unity
         {
             var serialize = new SerializerUnityYamlEditor();
 
-            var target = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty);
-
-            Assert.NotNull(target);
-            Assert.IsInstanceOf<TestSerializerUnityYamlEditorTarget>(target);
+            Assert.Throws<NotSupportedException>(() => serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty));
         }
 
         [Test]
