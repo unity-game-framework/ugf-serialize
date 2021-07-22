@@ -34,6 +34,17 @@ namespace UGF.Serialize.Editor.Tests.Unity
         }
 
         [Test]
+        public void DeserializeEmpty()
+        {
+            var serialize = new SerializerUnityYamlEditor();
+
+            var target = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty);
+
+            Assert.NotNull(target);
+            Assert.IsInstanceOf<TestSerializerUnityYamlEditorTarget>(target);
+        }
+
+        [Test]
         public void Copy()
         {
             var serializer = new SerializerUnityYamlEditor();

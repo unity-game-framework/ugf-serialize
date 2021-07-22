@@ -43,6 +43,17 @@ namespace UGF.Serialize.Runtime.Tests.Formatter
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
         }
 
+        [Test]
+        public void DeserializeEmpty()
+        {
+            var serializer = new SerializerFormatter();
+
+            var target = serializer.Deserialize<Target>(Array.Empty<byte>());
+
+            Assert.NotNull(target);
+            Assert.IsInstanceOf<Target>(target);
+        }
+
         [UnityTest]
         public IEnumerator SerializeAsync()
         {

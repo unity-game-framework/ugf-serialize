@@ -47,6 +47,17 @@ namespace UGF.Serialize.Editor.Tests.Unity
         }
 
         [Test]
+        public void DeserializeEmpty()
+        {
+            var serialize = new SerializerUnityJsonEditor();
+
+            var target = serialize.Deserialize<Target>(string.Empty);
+
+            Assert.NotNull(target);
+            Assert.IsInstanceOf<Target>(target);
+        }
+
+        [Test]
         public void SerializeScriptableObject()
         {
             var serialize = new SerializerUnityJsonEditor();
@@ -70,6 +81,17 @@ namespace UGF.Serialize.Editor.Tests.Unity
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
             Assert.AreEqual(target.FloatValue, target0.FloatValue);
+        }
+
+        [Test]
+        public void DeserializeScriptableObjectEmpty()
+        {
+            var serialize = new SerializerUnityJsonEditor();
+
+            var target = serialize.Deserialize<TestSerializerUnityYamlEditorTarget>(string.Empty);
+
+            Assert.NotNull(target);
+            Assert.IsInstanceOf<TestSerializerUnityYamlEditorTarget>(target);
         }
 
         [Test]
