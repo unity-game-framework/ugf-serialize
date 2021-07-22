@@ -4,7 +4,8 @@
     "references": [
         "GUID:e76e47a0b9e0396439161248a194baa5",
         "GUID:6c7389a7d4bbed54e96eb1e71a69798e",
-        "GUID:27619889b8ba8c24980f49ee34dbb44a"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:16fde9420ef50f34db61e711e19381dd"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -17,17 +18,6 @@
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
     ],
-    "versionDefines": [
-        {
-            "name": "com.ugf.jsonnet",
-            "expression": "1.2.2",
-            "define": "UGF_SERIALIZE_JSONNET"
-        },
-        {
-            "name": "com.ugf.yaml",
-            "expression": "1.1.0",
-            "define": "UGF_SERIALIZE_YAML"
-        }
-    ],
+    "versionDefines": [],
     "noEngineReferences": false
 }

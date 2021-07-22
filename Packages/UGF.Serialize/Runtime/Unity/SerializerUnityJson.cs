@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using UGF.RuntimeTools.Runtime.Contexts;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -35,22 +36,22 @@ namespace UGF.Serialize.Runtime.Unity
             Readable = readable;
         }
 
-        protected override object OnSerialize(object target)
+        protected override object OnSerialize(object target, IContext context)
         {
             return InternalSerialize(target, Readable);
         }
 
-        protected override object OnDeserialize(Type targetType, string data)
+        protected override object OnDeserialize(Type targetType, string data, IContext context)
         {
             return InternalDeserialize(targetType, data);
         }
 
-        protected override Task<string> OnSerializeAsync(object target)
+        protected override Task<string> OnSerializeAsync(object target, IContext context)
         {
             return Task.Run(() => InternalSerialize(target, Readable));
         }
 
-        protected override Task<object> OnDeserializeAsync(Type targetType, string data)
+        protected override Task<object> OnDeserializeAsync(Type targetType, string data, IContext context)
         {
             return Task.Run(() => InternalDeserialize(targetType, data));
         }

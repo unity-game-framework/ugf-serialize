@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using UGF.RuntimeTools.Runtime.Contexts;
 using UGF.Serialize.Runtime.Unity;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -28,7 +29,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             var serialize = new SerializerUnityJson();
             var target = new Target();
 
-            string text = serialize.Serialize(target);
+            string text = serialize.Serialize(target, new Context());
 
             Assert.NotNull(text);
             Assert.Greater(text.Length, 0);
@@ -40,8 +41,8 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             var serialize = new SerializerUnityJson();
             var target = new Target();
 
-            string text = serialize.Serialize(target);
-            var target0 = serialize.Deserialize<Target>(text);
+            string text = serialize.Serialize(target, new Context());
+            var target0 = serialize.Deserialize<Target>(text, new Context());
 
             Assert.AreEqual(target.BoolValue, target0.BoolValue);
             Assert.AreEqual(target.IntValue, target0.IntValue);
@@ -53,8 +54,8 @@ namespace UGF.Serialize.Runtime.Tests.Unity
         {
             var serialize = new SerializerUnityJson();
 
-            var target0 = serialize.Deserialize<Target>(string.Empty);
-            var target1 = serialize.Deserialize<Target>("{}");
+            var target0 = serialize.Deserialize<Target>(string.Empty, new Context());
+            var target1 = serialize.Deserialize<Target>("{}", new Context());
 
             Assert.NotNull(target0);
             Assert.NotNull(target1);
@@ -68,7 +69,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             var serialize = new SerializerUnityJson();
             var target = new Target();
 
-            Task<string> task = serialize.SerializeAsync(target);
+            Task<string> task = serialize.SerializeAsync(target, new Context());
 
             while (!task.IsCompleted)
             {
@@ -87,9 +88,9 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             var serialize = new SerializerUnityJson();
             var target = new Target();
 
-            string text = serialize.Serialize(target);
+            string text = serialize.Serialize(target, new Context());
 
-            Task<Target> task = serialize.DeserializeAsync<Target>(text);
+            Task<Target> task = serialize.DeserializeAsync<Target>(text, new Context());
 
             while (!task.IsCompleted)
             {
@@ -109,7 +110,7 @@ namespace UGF.Serialize.Runtime.Tests.Unity
             var serializer = new SerializerUnityJson();
             var target = new Target();
 
-            Target copy = SerializeUtility.Copy(target, serializer);
+            Target copy = SerializeUtility.Copy(target, serializer, new Context());
 
             Assert.NotNull(copy);
             Assert.AreNotEqual(copy, target);

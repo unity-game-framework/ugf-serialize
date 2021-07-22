@@ -1,4 +1,5 @@
 using System;
+using UGF.RuntimeTools.Runtime.Contexts;
 
 namespace UGF.Serialize.Runtime
 {
@@ -6,31 +7,38 @@ namespace UGF.Serialize.Runtime
     {
         public override Type DataType { get; } = typeof(TData);
 
-        public new TData Serialize<T>(T target)
+        public new TData Serialize<T>(T target, IContext context)
         {
-            return (TData)OnSerialize(target);
+            return Serialize((object)target, context);
         }
 
-        public new TData Serialize(object target)
+        public new TData Serialize(object target, IContext context)
         {
-            return (TData)OnSerialize(target);
+            if (target == null) throw new ArgumentNullException(nameof(target));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            return (TData)OnSerialize(target, context);
         }
 
-        public T Deserialize<T>(TData data)
+        public T Deserialize<T>(TData data, IContext context)
         {
-            return (T)OnDeserialize(typeof(T), data);
+            return (T)OnDeserialize(typeof(T), data, context);
         }
 
-        public object Deserialize(Type targetType, TData data)
+        public object Deserialize(Type targetType, TData data, IContext context)
         {
-            return OnDeserialize(targetType, data);
+            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
+            if (data == null) throw new ArgumentNullException(nameof(data));
+            if (context == null) throw new ArgumentNullException(nameof(context));
+
+            return OnDeserialize(targetType, data, context);
         }
 
-        protected override object OnDeserialize(Type targetType, object data)
+        protected override object OnDeserialize(Type targetType, object data, IContext context)
         {
-            return OnDeserialize(targetType, (TData)data);
+            return OnDeserialize(targetType, (TData)data, context);
         }
 
-        protected abstract object OnDeserialize(Type targetType, TData data);
+        protected abstract object OnDeserialize(Type targetType, TData data, IContext context);
     }
 }

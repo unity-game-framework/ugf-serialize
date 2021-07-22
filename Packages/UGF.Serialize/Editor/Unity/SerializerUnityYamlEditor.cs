@@ -1,5 +1,6 @@
 ﻿using System;
 using UGF.EditorTools.Editor.Yaml;
+using UGF.RuntimeTools.Runtime.Contexts;
 using UGF.Serialize.Runtime;
 using Unity.Profiling;
 using Object = UnityEngine.Object;
@@ -19,12 +20,12 @@ namespace UGF.Serialize.Editor.Unity
         }
 #endif
 
-        protected override object OnSerialize(object target)
+        protected override object OnSerialize(object target, IContext context)
         {
             return InternalSerialize(target);
         }
 
-        protected override object OnDeserialize(Type targetType, string data)
+        protected override object OnDeserialize(Type targetType, string data, IContext context)
         {
             return InternalDeserialize(data);
         }
