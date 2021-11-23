@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.0.0) - 2021-11-23  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/15?closed=1)  
+    
+
+### Added
+
+- Add serializer with container conversion ([#66](https://github.com/unity-game-framework/ugf-serialize/pull/66))  
+    - Update package _Unity_ version to `2021.2`.
+    - Update dependencies: `com.ugf.editortools` to `2.1.0` and `com.ugf.runtimetools` to `2.4.0`.
+    - Add `SerializerContainer` abstract class to implement serializer with container conversion.
+
 ## [5.0.0-preview](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.0.0-preview) - 2021-07-22  
 
 ### Release Notes
