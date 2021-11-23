@@ -2,7 +2,7 @@
   "name": "com.ugf.serialize",
   "displayName": "UGF.Serialize",
   "version": "5.0.0-preview",
-  "unity": "2021.1",
+  "unity": "2021.2",
   "apiCompatibility": ".NET Standard 2.0",
   "description": "An abstract serialization interface.",
   "author": {
