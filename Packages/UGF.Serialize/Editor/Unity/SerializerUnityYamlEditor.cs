@@ -27,7 +27,7 @@ namespace UGF.Serialize.Editor.Unity
 
         protected override object OnDeserialize(Type targetType, string data, IContext context)
         {
-            return InternalDeserialize(data);
+            return InternalDeserialize(targetType, data);
         }
 
         private static string InternalSerialize(object target)
@@ -43,13 +43,14 @@ namespace UGF.Serialize.Editor.Unity
             return result;
         }
 
-        private static object InternalDeserialize(string data)
+        private static object InternalDeserialize(Type targetType, string data)
         {
+            if (targetType == null) throw new ArgumentNullException(nameof(targetType));
             if (string.IsNullOrEmpty(data)) throw new NotSupportedException("Deserializing empty Yaml data into Unity object not supported.");
 
             m_markerDeserialize.Begin();
 
-            object target = EditorYamlUtility.FromYaml(data);
+            object target = EditorYamlUtility.FromYaml(data, targetType);
 
             m_markerDeserialize.End();
 
