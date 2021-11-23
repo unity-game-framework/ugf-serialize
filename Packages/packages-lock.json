@@ -8,14 +8,14 @@
       "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
     },
     "com.ugf.editortools": {
-      "version": "1.11.1",
+      "version": "2.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://unitygameframework.jfrog.io/artifactory/api/npm/default"
     },
     "com.ugf.runtimetools": {
-      "version": "2.2.0",
+      "version": "2.4.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -28,8 +28,8 @@
       "dependencies": {
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.ugf.builder": "2.0.1",
-        "com.ugf.editortools": "1.11.1",
-        "com.ugf.runtimetools": "2.2.0"
+        "com.ugf.editortools": "2.1.0",
+        "com.ugf.runtimetools": "2.4.0"
       }
     },
     "com.unity.ext.nunit": {
