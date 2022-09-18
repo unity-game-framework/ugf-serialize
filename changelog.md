@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.2.0) - 2022-09-18  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/17?closed=1)  
+    
+
+### Added
+
+- Add serialize type attribute ([#70](https://github.com/unity-game-framework/ugf-serialize/issues/70))  
+    - Add `SerializeTypeAttribute` attribute class to define type id for the specific target.
+    - Add `SerializeEditorUtility.GetSerializeTypes()` method and overloads to get types with `SerializeTypeAttribute` attribute defined.
+    - Add `SerializeEditorUtility.IsValidSerializableType()` method to determine whether type is regular serializable type.
+
 ## [5.1.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.1.0) - 2022-01-21  
 
 ### Release Notes

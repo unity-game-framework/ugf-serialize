@@ -4,16 +4,16 @@ UGF.Serialize
 
 ## Info
 
-- **Version**: `5.1.0`
+- **Version**: `5.2.0`
 - **Unity**: `2021.2`
 - **API Compatibility Level**: `.NET Standard 2.1`
 
 ### Dependencies
 
 - `com.unity.modules.jsonserialize`: `1.0.0`
-- `com.ugf.builder`: `2.0.1`
-- `com.ugf.editortools`: `2.1.0`
-- `com.ugf.runtimetools`: `2.4.0`
+- `com.ugf.builder`: `2.0.2`
+- `com.ugf.editortools`: `2.12.0`
+- `com.ugf.runtimetools`: `2.16.0`
 
 
 ### Description
