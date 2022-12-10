@@ -19,7 +19,7 @@ namespace UGF.Serialize.Editor
             {
                 SerializedProperty propertyElement = serializedProperty.GetArrayElementAtIndex(i);
 
-                if (TryUpdate(propertyElement, out _, out Type type))
+                if (TryUpdate(propertyElement, out _, out Type type) || TryGetTypeData(propertyElement, out _, out type))
                 {
                     typesCollected.Add(type);
                 }
@@ -33,6 +33,7 @@ namespace UGF.Serialize.Editor
 
                     SerializedProperty propertyElement = serializedProperty.GetArrayElementAtIndex(serializedProperty.arraySize - 1);
 
+                    SetTypeData(propertyElement, type, attribute);
                     TryUpdate(propertyElement);
                 }
             }
@@ -77,12 +78,12 @@ namespace UGF.Serialize.Editor
             type = default;
 
             SerializedProperty propertyIdValue = serializedProperty.FindPropertyRelative("m_idValue");
-            SerializedProperty propertyIdType = serializedProperty.FindPropertyRelative("m_idType");
+            SerializedProperty propertyIdType = serializedProperty.FindPropertyRelative("m_idType.m_value");
             SerializedProperty propertyTypeValue = serializedProperty.FindPropertyRelative("m_type.m_value");
 
             if (!string.IsNullOrEmpty(propertyIdValue.stringValue) && !string.IsNullOrEmpty(propertyIdType.stringValue))
             {
-                var idType = Type.GetType(propertyIdValue.stringValue);
+                var idType = Type.GetType(propertyIdType.stringValue);
 
                 id = idType != null ? Convert.ChangeType(propertyIdValue.stringValue, idType) : default;
             }
@@ -95,6 +96,11 @@ namespace UGF.Serialize.Editor
             return id != null && type != null;
         }
 
+        public static void SetTypeData(SerializedProperty serializedProperty, Type type, SerializeTypeAttribute attribute)
+        {
+            SetTypeData(serializedProperty, type, attribute, out _);
+        }
+
         public static void SetTypeData(SerializedProperty serializedProperty, Type type, SerializeTypeAttribute attribute, out object id)
         {
             if (serializedProperty == null) throw new ArgumentNullException(nameof(serializedProperty));
@@ -102,7 +108,7 @@ namespace UGF.Serialize.Editor
             if (attribute == null) throw new ArgumentNullException(nameof(attribute));
 
             SerializedProperty propertyIdValue = serializedProperty.FindPropertyRelative("m_idValue");
-            SerializedProperty propertyIdType = serializedProperty.FindPropertyRelative("m_idType");
+            SerializedProperty propertyIdType = serializedProperty.FindPropertyRelative("m_idType.m_value");
             SerializedProperty propertyTypeValue = serializedProperty.FindPropertyRelative("m_type.m_value");
 
             string idValue = attribute.HasId ? attribute.Id.ToString() : Guid.NewGuid().ToString("N");
