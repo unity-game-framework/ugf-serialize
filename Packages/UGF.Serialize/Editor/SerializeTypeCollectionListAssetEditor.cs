@@ -5,14 +5,14 @@ using UnityEditor;
 
 namespace UGF.Serialize.Editor
 {
-    [CustomEditor(typeof(SerializeTypeCollectionAsset), true)]
+    [CustomEditor(typeof(SerializeTypeCollectionListAsset), true)]
     internal class SerializeTypeCollectionListAssetEditor : UnityEditor.Editor
     {
-        private SerializeTypeCollectionListTypeCollectionDrawer m_listTypes;
+        private SerializeTypeDataCollectionDrawer m_listTypes;
 
         private void OnEnable()
         {
-            m_listTypes = new SerializeTypeCollectionListTypeCollectionDrawer(serializedObject.FindProperty("m_types"));
+            m_listTypes = new SerializeTypeDataCollectionDrawer(serializedObject.FindProperty("m_types"));
             m_listTypes.Enable();
         }
 
