@@ -8,7 +8,9 @@ namespace UGF.Serialize.Runtime
     public struct SerializeTypeData
     {
         [SerializeField] private string m_idValue;
+        [SerializeTypeReferenceDropdown]
         [SerializeField] private TypeReference m_idType;
+        [SerializeTypeReferenceDropdown]
         [SerializeField] private TypeReference m_type;
 
         public string IdValue { get { return m_idValue; } set { m_idValue = value; } }
