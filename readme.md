@@ -2,9 +2,9 @@
 
 UGF.Serialize
 
-## Info
+## Information
 
-- **Version**: `5.2.0`
+- **Version**: `5.3.0`
 - **Unity**: `2021.2`
 - **API Compatibility Level**: `.NET Standard 2.1`
 
@@ -12,7 +12,7 @@ UGF.Serialize
 
 - `com.unity.modules.jsonserialize`: `1.0.0`
 - `com.ugf.builder`: `2.0.2`
-- `com.ugf.editortools`: `2.12.0`
+- `com.ugf.editortools`: `2.14.0`
 - `com.ugf.runtimetools`: `2.16.0`
 
 

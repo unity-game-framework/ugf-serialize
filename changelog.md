@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.3.0) - 2022-12-10  
+
+### Release Notes
+
+- [Milestone](https://github.com/unity-game-framework/ugf-serialize/milestone/18?closed=1)  
+    
+
+### Added
+
+- Add type collection ([#72](https://github.com/unity-game-framework/ugf-serialize/issues/72))  
+    - Update dependencies: `com.ugf.editortools` to `2.14.0` version.
+    - Add `SerializeTypeCollectionAsset` abstract class to implement collection to store type information.
+    - Add `SerializeTypeCollectionListAsset` class as implementation of `SerializeTypeCollectionAsset` used to store type data as collection of `SerializeTypeData`.
+    - Add `SerializeTypeData` structure to store and select serializable type data.
+    - Add `SerializeTypeReferenceDropdownAttribute` attribute class used to select serializable types only.
+    - Add `SerializeTypeDataEditorUtility` static class to work with `SerializeTypeData` in editor.
+    - Change `SerializeTypeAttribute` attribute class to be created without id specified.
+    - Deprecate `SerializeEditorUtility.GetSerializeTypes()` methods, use `GetSerializeTypeByAttribute()` method instead.
+
 ## [5.2.0](https://github.com/unity-game-framework/ugf-serialize/releases/tag/5.2.0) - 2022-09-18  
 
 ### Release Notes
