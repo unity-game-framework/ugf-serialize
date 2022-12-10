@@ -10,7 +10,7 @@ namespace UGF.Serialize.Runtime
 
         private readonly object m_id;
 
-        public SerializeTypeAttribute(object id)
+        public SerializeTypeAttribute(object id = null)
         {
             m_id = id;
         }

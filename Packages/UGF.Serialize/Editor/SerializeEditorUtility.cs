@@ -7,30 +7,29 @@ using UnityEditor;
 
 namespace UGF.Serialize.Editor
 {
-    public static class SerializeEditorUtility
+    public static partial class SerializeEditorUtility
     {
-        public static void GetSerializeTypes(IDictionary<object, Type> types)
+        public static Dictionary<Type, SerializeTypeAttribute> GetSerializeTypeByAttribute()
         {
-            if (types == null) throw new ArgumentNullException(nameof(types));
+            var result = new Dictionary<Type, SerializeTypeAttribute>();
 
-            foreach ((Type type, SerializeTypeAttribute attribute) in GetSerializeTypes())
-            {
-                if (attribute.HasId)
-                {
-                    types.Add(attribute.Id, type);
-                }
-            }
+            GetSerializeTypeByAttribute(result);
+
+            return result;
         }
 
-        public static IEnumerable<(Type type, SerializeTypeAttribute Attribute)> GetSerializeTypes()
+        public static void GetSerializeTypeByAttribute(IDictionary<Type, SerializeTypeAttribute> attributes)
         {
+            if (attributes == null) throw new ArgumentNullException(nameof(attributes));
+
             TypeCache.TypeCollection collection = TypeCache.GetTypesWithAttribute<SerializeTypeAttribute>();
 
-            foreach (Type type in collection)
+            for (int i = 0; i < collection.Count; i++)
             {
+                Type type = collection[i];
                 var attribute = type.GetCustomAttribute<SerializeTypeAttribute>();
 
-                yield return (type, attribute);
+                attributes.Add(type, attribute);
             }
         }
 

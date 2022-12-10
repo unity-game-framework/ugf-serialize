@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d6c6676ff646f18fc2743eefafc10d, type: 3}
+  m_Name: New Serialize Type Collection List Asset
+  m_EditorClassIdentifier: 
+  m_types:
+  - m_idValue: 1
+    m_idType:
+      m_value: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    m_type:
+      m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target1, UGF.Serialize.Runtime.Tests,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - m_idValue: 0.5
+    m_idType:
+      m_value: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    m_type:
+      m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target2, UGF.Serialize.Runtime.Tests,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - m_idValue: 10
+    m_idType:
+      m_value: System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    m_type:
+      m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target3, UGF.Serialize.Runtime.Tests,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - m_idValue: test
+    m_idType:
+      m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    m_type:
+      m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target4, UGF.Serialize.Runtime.Tests,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - m_idValue: e9e80c3c097c42e5b017b47f3413f404
+    m_idType:
+      m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    m_type:
+      m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target5, UGF.Serialize.Runtime.Tests,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
