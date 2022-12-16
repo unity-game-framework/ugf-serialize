@@ -15,19 +15,19 @@ MonoBehaviour:
   m_types:
   - m_idValue: 1
     m_idType:
-      m_value: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
     m_type:
       m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target1, UGF.Serialize.Runtime.Tests,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - m_idValue: 0.5
     m_idType:
-      m_value: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
     m_type:
       m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target2, UGF.Serialize.Runtime.Tests,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - m_idValue: 10
     m_idType:
-      m_value: System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
     m_type:
       m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target3, UGF.Serialize.Runtime.Tests,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -37,7 +37,7 @@ MonoBehaviour:
     m_type:
       m_value: UGF.Serialize.Runtime.Tests.TestTypes+Target4, UGF.Serialize.Runtime.Tests,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - m_idValue: e9e80c3c097c42e5b017b47f3413f404
+  - m_idValue: 74b43727251c40deb2862bf053a8df7b
     m_idType:
       m_value: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
     m_type:
