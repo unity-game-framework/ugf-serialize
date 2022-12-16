@@ -107,18 +107,24 @@ namespace UGF.Serialize.Editor
             if (type == null) throw new ArgumentNullException(nameof(type));
             if (attribute == null) throw new ArgumentNullException(nameof(attribute));
 
+            id = attribute.HasId ? attribute.Id.ToString() : Guid.NewGuid().ToString("N");
+
+            SetTypeData(serializedProperty, type, id);
+        }
+
+        public static void SetTypeData(SerializedProperty serializedProperty, Type type, object id)
+        {
+            if (serializedProperty == null) throw new ArgumentNullException(nameof(serializedProperty));
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
             SerializedProperty propertyIdValue = serializedProperty.FindPropertyRelative("m_idValue");
             SerializedProperty propertyIdType = serializedProperty.FindPropertyRelative("m_idType.m_value");
             SerializedProperty propertyTypeValue = serializedProperty.FindPropertyRelative("m_type.m_value");
 
-            string idValue = attribute.HasId ? attribute.Id.ToString() : Guid.NewGuid().ToString("N");
-            Type idType = attribute.HasId ? attribute.Id.GetType() : typeof(string);
-
-            propertyIdValue.stringValue = idValue;
-            propertyIdType.stringValue = idType.AssemblyQualifiedName;
+            propertyIdValue.stringValue = id.ToString();
+            propertyIdType.stringValue = id.GetType().AssemblyQualifiedName;
             propertyTypeValue.stringValue = type.AssemblyQualifiedName;
-
-            id = attribute.HasId ? attribute.Id : idValue;
         }
     }
 }
