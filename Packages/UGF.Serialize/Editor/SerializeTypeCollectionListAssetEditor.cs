@@ -10,11 +10,11 @@ namespace UGF.Serialize.Editor
     [CustomEditor(typeof(SerializeTypeCollectionListAsset), true)]
     internal class SerializeTypeCollectionListAssetEditor : UnityEditor.Editor
     {
-        private ReorderableListKeyAndValueDrawer m_listTypes;
+        private SerializeTypeDataCollectionDrawer m_listTypes;
 
         private void OnEnable()
         {
-            m_listTypes = new ReorderableListKeyAndValueDrawer(serializedObject.FindProperty("m_types"), "m_idValue", "m_type");
+            m_listTypes = new SerializeTypeDataCollectionDrawer(serializedObject.FindProperty("m_types"));
             m_listTypes.Enable();
         }
 
