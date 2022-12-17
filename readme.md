@@ -4,7 +4,7 @@ UGF.Serialize
 
 ## Information
 
-- **Version**: `5.3.0`
+- **Version**: `5.3.1`
 - **Unity**: `2021.2`
 - **API Compatibility Level**: `.NET Standard 2.1`
 
