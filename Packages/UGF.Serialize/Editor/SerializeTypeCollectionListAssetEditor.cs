@@ -1,4 +1,5 @@
-﻿using UGF.EditorTools.Editor.IMGUI;
+﻿using System;
+using UGF.EditorTools.Editor.IMGUI;
 using UGF.EditorTools.Editor.IMGUI.Scopes;
 using UGF.Serialize.Runtime;
 using UnityEditor;
@@ -61,7 +62,10 @@ namespace UGF.Serialize.Editor
                 int index = m_listTypes.List.selectedIndices[i];
                 SerializedProperty propertyElement = m_listTypes.SerializedProperty.GetArrayElementAtIndex(index);
 
-                SerializeTypeDataEditorUtility.TryUpdate(propertyElement);
+                if (!SerializeTypeDataEditorUtility.TryUpdate(propertyElement, out _, out Type type) && type != null)
+                {
+                    SerializeTypeDataEditorUtility.SetTypeData(propertyElement, type, Guid.NewGuid().ToString("N"));
+                }
             }
 
             serializedObject.ApplyModifiedProperties();
